@@ -1,0 +1,53 @@
+id: biometric-id-privacy
+title: "Privacy: Selfie and biometric ID checks"
+regulator: "Office of the Privacy Commissioner"
+law: opc-biometrics
+features: [onboarding-kyc, authentication]
+products: [all]
+synonyms: [biometrics, selfie, facial recognition, face match, liveness, fingerprint, face id, biometric consent, privacy, law 25]
+
+tldr: >
+  Face templates from selfie checks are sensitive personal information. Get
+  express consent, offer a non-biometric alternative where you can, keep the
+  data only as long as needed, and test accuracy across groups.
+
+applies:
+  always: "Any selfie-to-ID matching, liveness check, or biometric login, including when a vendor runs it for you."
+  also_if:
+    - condition: "You serve Quebec"
+      note: "Biometric identity verification needs express consent and must be disclosed to Quebec's privacy regulator (CAI) in advance. A biometric database must be declared at least 60 days before it goes live."
+      cite: [{source: quebec-it-act, pinpoint: "ss.44–45"}]
+
+requirements:
+  - text: "Biometric data is sensitive. Express consent is generally required, with a clear explanation of what's collected, why, and who receives it."
+    cite: [{source: opc-biometrics}]
+  - text: "Where biometrics aren't essential, make them optional and offer an alternative that doesn't disadvantage people who decline."
+    cite: [{source: opc-biometrics}]
+  - text: "Collect the minimum: prefer one-to-one verification (selfie vs ID photo) over one-to-many identification, and don't derive other information (age, ethnicity, health) from images."
+    cite: [{source: opc-biometrics}]
+  - text: "Keep biometric data only as long as needed, then destroy it, including copies held by vendors and in backups."
+    cite: [{source: opc-biometrics}]
+  - text: "Test accuracy before launch and across demographic groups, monitor it over time, and have a human review path for failed matches."
+    cite: [{source: opc-biometrics}]
+
+design_implications:
+  do:
+    - text: "Show a consent screen before the selfie step: what's captured, why, who processes it (name the vendor), and how long it's kept."
+      cite: [{source: opc-biometrics}]
+    - text: "Offer 'Verify another way' (e.g. credit-file or dual-process verification, or an assisted path) next to the selfie option."
+      cite: [{source: opc-biometrics}, {source: pcmltfr, pinpoint: "s.105(1)", section: "105"}]
+    - text: "Contract with your ID vendor for deletion timelines, audit rights, and where the data is stored."
+      cite: [{source: opc-biometrics}]
+  dont:
+    - text: "Reuse onboarding selfies for other purposes (marketing, age estimation, training models) without separate consent."
+      cite: [{source: opc-biometrics}]
+    - text: "Rely only on a privacy policy link as consent for biometrics."
+      cite: [{source: opc-biometrics}]
+
+example: >
+  Your vendor keeps face templates for 3 years "to improve the model".
+  That's a new purpose needing its own consent. Negotiate deletion right
+  after verification, or get separate, specific consent.
+
+related: [fintrac-identity-verification]
+last_verified: 2026-10-12

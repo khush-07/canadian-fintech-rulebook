@@ -1,0 +1,51 @@
+id: crs-tax-self-certification
+title: "Tax residency self-certification and SIN"
+regulator: "Canada Revenue Agency"
+law: income-tax-act
+features: [onboarding-kyc, accounts]
+products: [deposits, investing]
+synonyms: [crs, fatca, tax residency, self-certification, tin, taxpayer identification number, sin, social insurance number, us person, w-9, t5]
+
+tldr: >
+  When a new account opens, collect a self-certification of the customer's
+  tax residency (CRS/FATCA) and check it's reasonable. Make a reasonable
+  effort to get their SIN when you'll need it for a tax slip.
+
+applies:
+  always: "Reporting financial institutions (banks, credit unions, investment dealers, some insurers) opening accounts for individuals."
+  also_if:
+    - condition: "The account earns interest or investment income"
+      note: "You'll file information returns (e.g. T5 slips), which need the customer's SIN."
+      cite: [{source: income-tax-act, pinpoint: "s.237(1.1)–(2)", section: "237"}]
+
+requirements:
+  - text: "Obtain a self-certification at account opening (it can be part of the sign-up flow) that determines the customer's tax residence."
+    cite: [{source: income-tax-act, pinpoint: "s.274(1)", section: "274"}]
+  - text: "Check the self-certification is reasonable against other information you collected at opening, including your KYC data."
+    cite: [{source: income-tax-act, pinpoint: "s.274(1)", section: "274"}]
+  - text: "If the customer is tax resident in another reportable jurisdiction, collect their foreign tax ID (TIN) and date of birth, and treat the account as reportable."
+    cite: [{source: income-tax-act, pinpoint: "s.274(2)", section: "274"}]
+  - text: "If circumstances change (e.g. a new foreign address), get a new valid self-certification."
+    cite: [{source: income-tax-act, pinpoint: "s.274(3)", section: "274"}]
+  - text: "Make a reasonable effort to get the SIN when you need it for an information return. Don't use or disclose it for anything else without written consent."
+    cite: [{source: income-tax-act, pinpoint: "s.237(2)", section: "237"}]
+
+design_implications:
+  do:
+    - text: "Add a short 'Tax residency' step: 'Are you a tax resident of any country other than Canada?' If yes, ask for each country and its TIN."
+      cite: [{source: income-tax-act, pinpoint: "s.274(1)–(2)", section: "274"}]
+    - text: "Cross-check answers against KYC data (e.g. a foreign address or phone number) and ask follow-up questions when they conflict."
+      cite: [{source: income-tax-act, pinpoint: "s.274(1)", section: "274"}]
+    - text: "Explain why you ask for the SIN ('for your T5 tax slip'), and don't use it as a general customer ID."
+      cite: [{source: income-tax-act, pinpoint: "s.237(2)(b)", section: "237"}]
+  dont:
+    - text: "Use the SIN as a login, search key, or for credit marketing."
+      cite: [{source: income-tax-act, pinpoint: "s.237(2)(b)", section: "237"}]
+
+example: >
+  A customer answers "Canada only" but gives a US phone number and address.
+  The self-certification isn't reasonable against the KYC data, so ask the
+  customer to confirm or update their tax residency.
+
+related: [fintrac-identity-verification]
+last_verified: 2026-10-12

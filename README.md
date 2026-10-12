@@ -6,11 +6,12 @@ A plain-English reference for product managers and designers at Canadian fintech
 
 ## Status
 
-Early prototype. One feature guide is written so far:
+Early prototype. Feature guides written so far:
 
 - **Marketing messages** (CASL consent, unsubscribe, referral messages; Competition Act misleading messages and drip pricing)
+- **Onboarding & KYC** (FINTRAC identity verification, PEP/HIO, third-party determination, account purpose and monitoring; sanctions screening; CRS/FATCA self-certification and SIN; biometric privacy; Bank Act basic banking access)
 
-Planned guides: Onboarding & KYC, Payments & transfers, Fees & pricing, Lending & BNPL, Complaints & support, AI & automated decisions, Vendors & cloud, Accounts & deposits, Data & privacy.
+Planned guides: Payments & transfers, Fees & pricing, Lending & BNPL, Complaints & support, AI & automated decisions, Vendors & cloud, Accounts & deposits, Data & privacy.
 
 ## How it works
 

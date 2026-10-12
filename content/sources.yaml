@@ -66,6 +66,94 @@ competition-act:
   pinpoint_url_pattern: "https://laws-lois.justice.gc.ca/eng/acts/C-34/section-{section}.html"
   last_checked: 2026-10-12
 
+pcmltfa:
+  title: "Proceeds of Crime (Money Laundering) and Terrorist Financing Act, S.C. 2000, c. 17"
+  short: PCMLTFA
+  regulator: FINTRAC
+  authority: binding
+  url: "https://laws-lois.justice.gc.ca/eng/acts/P-24.501/"
+  pinpoint_url_pattern: "https://laws-lois.justice.gc.ca/eng/acts/P-24.501/section-{section}.html"
+  currency_date: 2026-09-21
+  last_checked: 2026-10-12
+
+pcmltfr:
+  title: "Proceeds of Crime (Money Laundering) and Terrorist Financing Regulations, SOR/2002-184"
+  short: PCMLTFR
+  regulator: FINTRAC
+  authority: binding
+  url: "https://laws-lois.justice.gc.ca/eng/regulations/SOR-2002-184/"
+  pinpoint_url_pattern: "https://laws-lois.justice.gc.ca/eng/regulations/SOR-2002-184/section-{section}.html"
+  last_checked: 2026-10-12
+
+fintrac-id-guidance:
+  title: "FINTRAC guidance: Methods to verify the identity of persons and entities"
+  short: "FINTRAC ID guidance"
+  regulator: FINTRAC
+  authority: interpretive
+  url: "https://fintrac-canafe.canada.ca/guidance-directives/client-clientele/Guide11/11-eng"
+  last_checked: 2026-10-12
+
+fintrac-pep-guidance:
+  title: "FINTRAC guidance: Politically exposed persons and heads of international organizations"
+  short: "FINTRAC PEP guidance"
+  regulator: FINTRAC
+  authority: interpretive
+  url: "https://fintrac-canafe.canada.ca/guidance-directives/client-clientele/pep/pep-eng"
+  last_checked: 2026-10-12
+
+criminal-code:
+  title: "Criminal Code, R.S.C. 1985, c. C-46"
+  short: "Criminal Code"
+  regulator: "RCMP / Public Safety Canada"
+  authority: binding
+  url: "https://laws-lois.justice.gc.ca/eng/acts/C-46/"
+  pinpoint_url_pattern: "https://laws-lois.justice.gc.ca/eng/acts/C-46/section-{section}.html"
+  last_checked: 2026-10-12
+
+sema-russia:
+  title: "Special Economic Measures (Russia) Regulations, SOR/2014-58"
+  short: "SEMA Russia Regs"
+  regulator: "Global Affairs Canada"
+  authority: binding
+  url: "https://laws-lois.justice.gc.ca/eng/regulations/SOR-2014-58/"
+  pinpoint_url_pattern: "https://laws-lois.justice.gc.ca/eng/regulations/SOR-2014-58/section-{section}.html"
+  last_checked: 2026-10-12
+
+bank-act:
+  title: "Bank Act, S.C. 1991, c. 46"
+  short: "Bank Act"
+  regulator: FCAC
+  authority: binding
+  url: "https://laws-lois.justice.gc.ca/eng/acts/B-1.01/"
+  pinpoint_url_pattern: "https://laws-lois.justice.gc.ca/eng/acts/B-1.01/section-{section}.html"
+  last_checked: 2026-10-12
+
+income-tax-act:
+  title: "Income Tax Act, R.S.C. 1985, c. 1 (5th Supp.)"
+  short: "Income Tax Act"
+  regulator: "Canada Revenue Agency"
+  authority: binding
+  url: "https://laws-lois.justice.gc.ca/eng/acts/I-3.3/"
+  pinpoint_url_pattern: "https://laws-lois.justice.gc.ca/eng/acts/I-3.3/section-{section}.html"
+  last_checked: 2026-10-12
+
+opc-biometrics:
+  title: "OPC: Guidance for processing biometrics – for businesses (2025)"
+  short: "OPC biometrics guidance"
+  regulator: "Office of the Privacy Commissioner of Canada"
+  authority: interpretive
+  url: "https://www.priv.gc.ca/en/privacy-topics/health-information-genetics-biometrics/biometrics/gd_bio_org-final/"
+  last_checked: 2026-10-12
+
+quebec-it-act:
+  title: "Act to establish a legal framework for information technology, CQLR c C-1.1 (Quebec)"
+  short: "Quebec IT Act"
+  regulator: "Commission d'accès à l'information du Québec"
+  authority: binding
+  url: "https://www.legisquebec.gouv.qc.ca/en/document/cs/C-1.1"
+  last_checked: 2026-10-12
+  needs_review: true   # official site blocked automated fetch; ss.44-45 confirmed only via law-firm commentary
+
 our-guidance:
   title: "Fintech Rules editorial team recommendation"
   short: "Best practice"

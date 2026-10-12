@@ -1,0 +1,44 @@
+id: fintrac-third-party-determination
+title: "FINTRAC: Third-party determination at account opening"
+regulator: FINTRAC
+law: pcmltfa
+features: [onboarding-kyc, accounts]
+products: [deposits, investing]
+synonyms: [third party, acting on behalf, who will use the account, beneficial user, account for someone else, nominee]
+
+tldr: >
+  When opening an account, take reasonable steps to find out whether someone
+  other than the account holder will use or direct it. If so, collect and
+  record who they are.
+
+applies:
+  always: "Opening an account that needs a signature card or account operating agreement (i.e. most deposit and investment accounts)."
+  not_covered:
+    text: "Accounts where every account holder is a financial entity or a securities dealer."
+    cite: [{source: pcmltfr, pinpoint: "s.135(4)", section: "135"}]
+
+requirements:
+  - text: "At account opening, take reasonable measures to determine whether the account will be used by or on behalf of a third party."
+    cite: [{source: pcmltfr, pinpoint: "s.135(1)", section: "135"}]
+  - text: "If there is a third party, record their name, address, phone number, date of birth and occupation (or business details for an entity), and their relationship to the account holder."
+    cite: [{source: pcmltfr, pinpoint: "s.135(2)", section: "135"}]
+  - text: "If you can't tell but suspect a third party, record whether the customer says the account is only for them, and why you suspect otherwise."
+    cite: [{source: pcmltfr, pinpoint: "s.135(3)", section: "135"}]
+
+design_implications:
+  do:
+    - text: "Add a plain question: 'Will anyone else use this account or tell you how to use it?' If yes, show a short form for their details."
+      cite: [{source: pcmltfr, pinpoint: "s.135(1)–(2)", section: "135"}, {source: our-guidance}]
+    - text: "Give ops staff a way to log 'suspected third party' notes on the customer record."
+      cite: [{source: pcmltfr, pinpoint: "s.135(3)", section: "135"}]
+  dont:
+    - text: "Bury the question in Terms & Conditions. It needs an actual answer that you record."
+      cite: [{source: our-guidance}]
+
+example: >
+  A customer opens an account and says their adult son will manage it and
+  make all transfers. Record the son's details and relationship, even though
+  he isn't an account holder.
+
+related: [fintrac-identity-verification, fintrac-business-relationship]
+last_verified: 2026-10-12

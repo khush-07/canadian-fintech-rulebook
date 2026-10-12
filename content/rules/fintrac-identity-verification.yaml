@@ -1,0 +1,85 @@
+id: fintrac-identity-verification
+title: "FINTRAC: Verifying a customer's identity"
+regulator: FINTRAC
+law: pcmltfa
+features: [onboarding-kyc, accounts, cards, payments]
+products: [deposits, cards, prepaid, payments, investing, crypto]
+synonyms: [kyc, know your customer, id check, identity verification, idv, selfie, liveness, document scan, credit file, dual process, photo id, onboarding, cdd]
+
+tldr: >
+  Before a new customer can use their account, confirm they are who they say
+  they are using one of FINTRAC's approved methods, and record exactly how
+  you did it.
+
+applies:
+  always: >
+    You are a FINTRAC reporting entity: banks, credit unions, trust and loan
+    companies, securities dealers, life insurers, and money services
+    businesses (MSBs). Payment, remittance and crypto apps are often MSBs.
+  also_if:
+    - condition: "You're a bank opening a retail deposit account"
+      note: "If the customer can't pass these methods, the Bank Act's basic banking rules may still require you to open the account."
+      cite: [{source: pcmltfr, pinpoint: "s.105(6)", section: "105"}]
+    - condition: "The customer is a child"
+      note: "Under 12: verify a parent or guardian. Ages 12–15: you can use a parent's name and address to confirm the child's address."
+      cite: [{source: pcmltfr, pinpoint: "s.105(2)–(3)", section: "105"}]
+  unclear:
+    text: >
+      Payment apps registered only under the Retail Payment Activities Act
+      are not automatically FINTRAC reporting entities. But if you transfer
+      funds or deal in virtual currency, you're probably an MSB. Confirm your
+      status with compliance before you design onboarding.
+    cite:
+      - {source: pcmltfa, pinpoint: "s.5(h)", section: "5"}
+      - {source: our-guidance}
+
+requirements:
+  - text: "Use one approved method: government-issued photo ID; information from an authorized government body; a Canadian credit file at least 3 years old; the dual-process method (two different reliable sources); or an earlier verification by an affiliate or credit union central."
+    cite: [{source: pcmltfr, pinpoint: "s.105(1)(a)–(e)", section: "105"}]
+  - text: "Photo ID must be from a federal, provincial or foreign government, not a municipality, and must be authentic, valid and current."
+    cite:
+      - {source: pcmltfr, pinpoint: "s.105(1)(a), s.105(5)", section: "105"}
+  - text: "For dual-process, the two sources must be different and independent. Neither the customer nor your company can be a source, and a credit file used as one source must be at least 6 months old."
+    cite: [{source: pcmltfr, pinpoint: "s.105(4)", section: "105"}]
+  - text: "For remote photo ID, authenticate the document with technology that checks its security features, and confirm the person matches the photo (e.g. a live selfie compared by facial matching). A video call alone isn't enough."
+    cite: [{source: fintrac-id-guidance}]
+  - text: "Verify before the first transaction on the account other than the initial deposit, before a credit card is activated, and before a prepaid account is activated."
+    cite: [{source: pcmltfr, pinpoint: "s.105(7)(b), (d), (e)", section: "105"}]
+  - text: "Record the customer's name, the date, and the method details: document type, number, issuing jurisdiction and expiry; or the credit bureau and file number; or both dual-process sources and their reference numbers."
+    cite: [{source: pcmltfr, pinpoint: "s.108", section: "108"}]
+  - text: "Keep account-related records for at least 5 years after the account closes, and other records for 5 years after they're created."
+    cite: [{source: pcmltfr, pinpoint: "s.148(1)", section: "148"}]
+  - text: "You can use an ID-verification agent or rely on another reporting entity only with a written agreement in place, and you remain responsible for compliance."
+    cite:
+      - {source: pcmltfr, pinpoint: "ss.106–107", section: "106"}
+      - {source: fintrac-id-guidance}
+
+design_implications:
+  do:
+    - text: "Let customers make the initial deposit while verification is pending, but block every other transaction until it passes."
+      cite: [{source: pcmltfr, pinpoint: "s.105(7)(b)", section: "105"}]
+    - text: "ID scan → live selfie with liveness check, as one guided flow, with clear retake tips (glare, cropping, expired ID)."
+      cite: [{source: fintrac-id-guidance}, {source: our-guidance}]
+    - text: "Offer a fallback path when one method fails. Newcomers to Canada often fail the credit-file method because it needs 3 years of history."
+      cite: [{source: pcmltfr, pinpoint: "s.105(1)(c)", section: "105"}, {source: our-guidance}]
+    - text: "Store which method was used and the required details as structured fields, not just an image, so you can produce the record on request."
+      cite: [{source: pcmltfr, pinpoint: "s.108", section: "108"}]
+  dont:
+    - text: "Accept an uploaded photo or screenshot of an ID without authenticating it."
+      cite: [{source: pcmltfr, pinpoint: "s.105(5)", section: "105"}, {source: fintrac-id-guidance}]
+    - text: "Let customers upload their own credit report, or use social media as a dual-process source."
+      cite: [{source: fintrac-id-guidance}]
+    - text: "Accept municipal IDs (e.g. a city library or transit card) as photo ID."
+      cite: [{source: pcmltfr, pinpoint: "s.105(1)(a)", section: "105"}]
+
+example: >
+  A newcomer with a passport but no Canadian credit history fails the
+  credit-file check (it needs 3 years). Route them to passport scan plus a
+  live selfie match instead of rejecting the application.
+
+penalties:
+  text: "FINTRAC can impose penalties of up to $20M per violation for businesses ($4M for individuals). The total on one notice can reach 3% of global revenue."
+  cite: [{source: pcmltfa, pinpoint: "s.73.1(2)–(3)", section: "73.1"}]
+
+related: [fintrac-pep-hio, fintrac-third-party-determination, fintrac-business-relationship, biometric-id-privacy, bank-basic-banking-access]
+last_verified: 2026-10-12

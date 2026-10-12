@@ -1,0 +1,70 @@
+id: fintrac-pep-hio
+title: "FINTRAC: Politically exposed persons (PEP) checks"
+regulator: FINTRAC
+law: pcmltfa
+features: [onboarding-kyc, payments]
+products: [deposits, cards, prepaid, payments, investing, crypto]
+synonyms: [pep, politically exposed person, hio, head of international organization, pep screening, enhanced due diligence, edd, source of funds, source of wealth]
+
+tldr: >
+  When someone opens an account, take reasonable steps to find out if they
+  (or a family member or close associate) hold or recently held an important
+  public office. Foreign PEPs always need extra checks and senior approval,
+  within 30 days.
+
+applies:
+  always: "Financial entities opening an account, or adding an authorized user to one."
+  also_if:
+    - condition: "Large transfers"
+      note: "International EFTs, virtual currency transfers and prepaid top-ups of $100,000 or more also trigger a PEP check."
+      cite: [{source: pcmltfr, pinpoint: "s.116(1)(b)", section: "116"}]
+    - condition: "You're an MSB, securities dealer or life insurer"
+      note: "Similar rules apply under your own sections of the Regulations, with different triggers."
+      cite: [{source: pcmltfr, pinpoint: "ss.117–120", section: "117"}]
+
+requirements:
+  - text: "Take reasonable measures to determine if the account holder or authorized user is a foreign PEP, a domestic PEP, a head of an international organization (HIO), or a family member or close associate of one."
+    cite:
+      - {source: pcmltfa, pinpoint: "s.9.3(1)", section: "9.3"}
+      - {source: pcmltfr, pinpoint: "s.116(1)(a)", section: "116"}
+  - text: "Repeat the check periodically for existing customers, and whenever something suggests a customer might be a PEP."
+    cite: [{source: pcmltfr, pinpoint: "s.116(2)–(3)", section: "116"}]
+  - text: "Foreign PEPs (and their family and close associates): establish the source of funds and source of wealth, and get senior management approval to keep the account open."
+    cite: [{source: pcmltfr, pinpoint: "s.121(1)", section: "121"}]
+  - text: "Domestic PEPs and HIOs: apply the same measures only if your risk assessment rates them high-risk."
+    cite:
+      - {source: pcmltfa, pinpoint: "s.9.3(2.1)", section: "9.3"}
+      - {source: pcmltfr, pinpoint: "s.121(2)", section: "121"}
+  - text: "Complete the determination and any required measures within 30 days of opening the account or detecting the fact."
+    cite: [{source: pcmltfr, pinpoint: "s.121(3)", section: "121"}]
+  - text: "Domestic PEP and HIO status ends 5 years after leaving office. Foreign PEP status never expires."
+    cite:
+      - {source: pcmltfa, pinpoint: "s.9.3(3)", section: "9.3"}
+      - {source: fintrac-pep-guidance}
+
+design_implications:
+  do:
+    - text: "Ask a simple self-declaration question in onboarding ('Do you or a close family member hold, or have you held, a senior public office?'), with examples and a link explaining why you ask."
+      cite: [{source: fintrac-pep-guidance}, {source: our-guidance}]
+    - text: "Combine self-declaration with automated screening against a PEP database, and re-screen existing customers on a schedule."
+      cite: [{source: pcmltfr, pinpoint: "s.116(2)", section: "116"}, {source: our-guidance}]
+    - text: "Build an internal case flow: flag → source-of-funds request → senior-manager approval, with a 30-day timer."
+      cite: [{source: pcmltfr, pinpoint: "s.121(3)", section: "121"}]
+  dont:
+    - text: "Auto-reject PEPs. Being a PEP isn't a crime; the rules require extra measures, not refusal."
+      cite: [{source: pcmltfa, pinpoint: "s.9.3(2)", section: "9.3"}, {source: fintrac-pep-guidance}]
+    - text: "Treat a domestic PEP exactly like a foreign PEP by default. Domestic PEPs need extra measures only when risk-assessed as high."
+      cite: [{source: pcmltfr, pinpoint: "s.121(2)", section: "121"}]
+
+example: >
+  A user says they're a former deputy minister in another country. Their
+  account can open, but within 30 days you must document where the deposited
+  funds and their wealth come from, and a senior manager must approve keeping
+  the account.
+
+penalties:
+  text: "FINTRAC can impose penalties of up to $20M per violation for businesses ($4M for individuals)."
+  cite: [{source: pcmltfa, pinpoint: "s.73.1(2)", section: "73.1"}]
+
+related: [fintrac-identity-verification, fintrac-business-relationship, sanctions-screening]
+last_verified: 2026-10-12

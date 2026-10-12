@@ -1,0 +1,48 @@
+id: bank-basic-banking-access
+title: "Bank Act: Right to open a basic account"
+regulator: FCAC
+law: bank-act
+features: [onboarding-kyc, accounts]
+products: [deposits]
+synonyms: [basic banking, access to basic banking, refuse account, minimum deposit, account refusal, unbanked, newcomers, identification requirements]
+
+tldr: >
+  Banks must open a retail deposit account for most people who show
+  acceptable ID. They can't require a minimum deposit or balance, and can
+  refuse only for specific reasons like suspected fraud.
+
+applies:
+  always: "Banks and federal credit unions (Bank Act) opening retail deposit accounts for individuals."
+  not_covered: "Non-bank fintechs, provincial credit unions and MSBs. Provincial rules may differ."
+
+requirements:
+  - text: "Open the account if the person shows two ID documents from reliable sources (one with name and address, one with name and date of birth), or one document plus confirmation of identity by a customer or community member in good standing."
+    cite: [{source: bank-act, pinpoint: "s.627.17(1)(a)", section: "627.17"}]
+  - text: "You may ask for government photo ID only if you have reasonable grounds to suspect identity misrepresentation."
+    cite: [{source: bank-act, pinpoint: "s.627.17(1)(c)", section: "627.17"}]
+  - text: "Don't require an initial deposit or a minimum balance."
+    cite: [{source: bank-act, pinpoint: "s.627.17(4)", section: "627.17"}]
+  - text: "Refuse only for listed reasons: suspected illegal or fraudulent use, fraud history in the last 7 years, a material misrepresentation, or to protect customers or staff from harm. Bankruptcy alone isn't a reason."
+    cite: [{source: bank-act, pinpoint: "s.627.18(1)–(2)", section: "627.18"}]
+  - text: "If the person meets these Bank Act conditions but can't pass FINTRAC's ID methods, you're treated as having verified their identity."
+    cite: [{source: pcmltfr, pinpoint: "s.105(6)", section: "105"}]
+
+design_implications:
+  do:
+    - text: "Show a list of accepted ID documents upfront, including non-photo options like utility bills and benefit statements."
+      cite: [{source: bank-act, pinpoint: "s.627.17(1)(a)", section: "627.17"}]
+    - text: "Route people who fail digital ID checks to an assisted path (branch or agent), rather than a dead end."
+      cite: [{source: bank-act, pinpoint: "s.627.17(1)–(3)", section: "627.17"}, {source: our-guidance}]
+  dont:
+    - text: "Add a 'minimum opening deposit' step to a retail deposit account."
+      cite: [{source: bank-act, pinpoint: "s.627.17(4)", section: "627.17"}]
+    - text: "Automatically decline applicants with a past bankruptcy."
+      cite: [{source: bank-act, pinpoint: "s.627.18(2)", section: "627.18"}]
+
+example: >
+  An applicant has a foreign passport and a recent Canadian utility bill but
+  fails the selfie check. A bank shouldn't decline them; send them to an
+  assisted path where those two documents can be accepted.
+
+related: [fintrac-identity-verification]
+last_verified: 2026-10-12

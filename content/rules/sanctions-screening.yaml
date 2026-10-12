@@ -1,0 +1,58 @@
+id: sanctions-screening
+title: "Sanctions and terrorist list screening"
+regulator: "Global Affairs Canada / RCMP"
+law: criminal-code
+features: [onboarding-kyc, payments, accounts]
+products: [all]
+synonyms: [sanctions, sanctions screening, ofac, listed person, terrorist list, sema, asset freeze, watchlist, name screening, russia sanctions]
+
+tldr: >
+  You can't deal with property of, or provide financial services to,
+  sanctioned or terrorist-listed people. Screen customers at sign-up and on
+  an ongoing basis, freeze matches, and report them to the RCMP and CSIS.
+
+applies:
+  always: "Everyone in Canada, and Canadians abroad. These prohibitions aren't limited to FINTRAC reporting entities."
+  also_if:
+    - condition: "You're a bank, credit union, trust or loan company, insurer, or securities dealer"
+      note: "You must also check continuously whether you hold listed persons' property, and report to your regulator."
+      cite:
+        - {source: criminal-code, pinpoint: "s.83.11(1)–(2)", section: "83.11"}
+        - {source: sema-russia, pinpoint: "s.6(a)–(h), (j)", section: "6"}
+    - condition: "You're a money services business that opens accounts for clients"
+      note: "Sanctions regulations also require you to check continuously whether you hold listed persons' property (the Criminal Code's regulator-reporting duty doesn't apply to MSBs)."
+      cite: [{source: sema-russia, pinpoint: "s.6(i)", section: "6"}]
+
+requirements:
+  - text: "Don't knowingly deal in property owned or controlled by a terrorist group, enter into transactions involving it, or provide financial services for it."
+    cite: [{source: criminal-code, pinpoint: "s.83.08(1)", section: "83.08"}]
+  - text: "Under each country's sanctions regulations, don't deal in property of listed persons or provide them financial services. Russia is shown as an example; other countries have similar regulations."
+    cite: [{source: sema-russia, pinpoint: "s.3", section: "3"}]
+  - text: "Promptly disclose to the RCMP and CSIS any property you hold for a terrorist group or listed person, and any related transaction information."
+    cite:
+      - {source: criminal-code, pinpoint: "s.83.1(1)", section: "83.1"}
+      - {source: sema-russia, pinpoint: "s.7(1)", section: "7"}
+  - text: "Federally and provincially regulated financial institutions must determine on a continuing basis whether they hold such property, and report to their regulator (monthly unless regulations say otherwise)."
+    cite: [{source: criminal-code, pinpoint: "s.83.11", section: "83.11"}]
+
+design_implications:
+  do:
+    - text: "Screen names at onboarding, before the account becomes usable, and re-screen the whole customer base whenever sanctions lists change."
+      cite: [{source: criminal-code, pinpoint: "s.83.11(1)", section: "83.11"}, {source: our-guidance}]
+    - text: "Screen payment counterparties too, not just your own customers."
+      cite: [{source: criminal-code, pinpoint: "s.83.08(1)(b)", section: "83.08"}, {source: our-guidance}]
+    - text: "Build an ops review queue for potential matches, with a neutral customer message ('We need a bit more time to review your application')."
+      cite: [{source: our-guidance}]
+  dont:
+    - text: "Tell a customer they matched a sanctions or terrorist list. Keep the reason internal."
+      cite: [{source: our-guidance}]
+    - text: "Process a payment while a potential match is unresolved."
+      cite: [{source: criminal-code, pinpoint: "s.83.08(1)", section: "83.08"}]
+
+example: >
+  A new sanctions listing is published overnight. Your batch re-screen flags
+  an existing customer. Freeze activity on the account, escalate to
+  compliance, and disclose to the RCMP and CSIS if it's a true match.
+
+related: [fintrac-identity-verification, fintrac-pep-hio]
+last_verified: 2026-10-12

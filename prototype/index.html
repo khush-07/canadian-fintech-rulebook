@@ -249,11 +249,15 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: s
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@7.0.0/dist/fuse.min.js"></script>
 <script>
 // Content manifest. In the real site the build step will discover these files.
-const RULE_IDS = ['casl-consent', 'casl-unsubscribe', 'casl-referral-messages', 'competition-misleading-messages'];
-const FEATURE_IDS = ['marketing-messages'];
+const RULE_IDS = [
+  'casl-consent', 'casl-unsubscribe', 'casl-referral-messages', 'competition-misleading-messages',
+  'fintrac-identity-verification', 'fintrac-pep-hio', 'fintrac-third-party-determination', 'fintrac-business-relationship',
+  'sanctions-screening', 'crs-tax-self-certification', 'biometric-id-privacy', 'bank-basic-banking-access',
+];
+const FEATURE_IDS = ['marketing-messages', 'onboarding-kyc'];
 const FEATURE_TILES = [
   { id: 'marketing-messages', name: 'Marketing messages', blurb: 'Email, SMS, push and in-app promos' },
-  { name: 'Onboarding & KYC', blurb: 'ID checks, PEP and sanctions screening' },
+  { id: 'onboarding-kyc', name: 'Onboarding & KYC', blurb: 'ID checks, PEP and sanctions screening' },
   { name: 'Payments & transfers', blurb: 'e-Transfer, EFTs, real-time payments' },
   { name: 'Fees & pricing', blurb: 'Disclosures and fee change notices' },
   { name: 'Lending & BNPL', blurb: 'Cost of borrowing, interest rate cap' },
@@ -263,7 +267,7 @@ const FEATURE_TILES = [
   { name: 'Accounts & deposits', blurb: 'Deposit insurance, account terms' },
   { name: 'Data & privacy', blurb: 'Consent, retention, breaches' },
 ];
-const EXAMPLES = ['unsubscribe', 'pre-checked box', 'refer a friend', 'push notifications', 'drip pricing'];
+const EXAMPLES = ['unsubscribe', 'selfie ID check', 'PEP', 'sanctions', 'refer a friend'];
 const AUTH = {
   binding: { label: 'Law', cls: 'b-law', cite: '', note: 'Legally binding. This is the law itself.' },
   interpretive: { label: 'Regulator guidance', cls: 'b-guide', cite: 'c-guide', note: 'How the regulator interprets the law. Not the law itself, but it shows how they enforce it.' },
@@ -329,6 +333,30 @@ function sourcesList() {
         <span class="badge ${a.cls}">${a.label}</span>
         ${url ? `<a class="src-title" href="${esc(url)}" target="_blank" rel="noopener">${esc(s.title)} ↗</a>` : `<span class="src-title">${esc(s.title)}</span>`}
         <div class="sub">${c.pinpoint ? `<span class="mono">${esc(c.pinpoint)}</span>` : ''}
+          ${s.last_checked ? `<span>Last checked ${fmtDate(s.last_checked)}</span>` : ''}
+          ${s.needs_review ? `<span style="color:var(--warn)">Pending re-verification</span>` : ''}</div>
+      </div></li>`;
+    }).join('')}</ol></section>`;
+}
+
+// Feature guides cite many rules, so their sources are grouped by law with the cited sections as links.
+function groupedSources(ruleIds) {
+  const groups = new Map();
+  ruleIds.forEach(rid => allCites(DATA.rules[rid]).forEach(c => {
+    if (!groups.has(c.source)) groups.set(c.source, new Map());
+    if (c.section) groups.get(c.source).set(`s.${c.section}`, citeUrl(c));
+  }));
+  groups.forEach((pins, id) => groups.set(id, new Map([...pins].sort((a, b) => parseFloat(a[0].slice(2)) - parseFloat(b[0].slice(2))))));
+  const order = { binding: 0, interpretive: 1, best_practice: 2 };
+  const items = [...groups].sort((a, b) => (order[src({ source: a[0] }).authority] ?? 3) - (order[src({ source: b[0] }).authority] ?? 3));
+  return `<section class="block" id="sources"><h2>Sources in this guide</h2>
+    <p class="meta" style="margin:-6px 0 14px">Every law and guidance document the rules above rely on. Section links open the official text.</p>
+    <ol class="sources">${items.map(([id, pins], i) => {
+      const s = src({ source: id }), a = AUTH[s.authority] || AUTH.binding;
+      return `<li><span class="n">${i + 1}</span><div>
+        <span class="badge ${a.cls}">${a.label}</span>
+        ${s.url ? `<a class="src-title" href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.title)} ↗</a>` : `<span class="src-title">${esc(s.title)}</span>`}
+        <div class="sub">${[...pins].map(([p, u]) => u ? `<a class="mono" href="${esc(u)}" target="_blank" rel="noopener">${esc(p)}</a>` : `<span class="mono">${esc(p)}</span>`).join('')}
           ${s.last_checked ? `<span>Last checked ${fmtDate(s.last_checked)}</span>` : ''}
           ${s.needs_review ? `<span style="color:var(--warn)">Pending re-verification</span>` : ''}</div>
       </div></li>`;
@@ -489,9 +517,6 @@ function renderFeature(id) {
   md = md.replace(/\[([a-z0-9-]{3,})\]/g, (m, rid) => DATA.rules[rid] ? `[${DATA.rules[rid].title} →](#rule-${rid})` : m);
   const checklistMd = (f.body.split('## Pre-build checklist')[1] || '').split('\n## ')[0].trim();
 
-  // Sources for the whole feature = every citation in its rules, grouped by source.
-  f.rules.forEach(rid => allCites(DATA.rules[rid]).forEach(c => cite([c])));
-
   app.innerHTML = `
     <div>
       <nav class="crumbs" aria-label="Breadcrumb"><a href="#home">Home</a><span>/</span><span>Feature guide</span></nav>
@@ -504,7 +529,7 @@ function renderFeature(id) {
       <div class="md" id="md">${marked.parse(md)}</div>
       ${f.coming_soon?.length ? `<section class="block"><h2>Also relevant, coming soon</h2><div class="chips coming">${f.coming_soon.map(x => `<span class="chip muted">${esc(x.replace(/-/g, ' '))}</span>`).join('')}</div></section>` : ''}
       <section class="block actions"><button type="button" class="btn" id="report">Report an issue</button></section>
-      <div class="read">${sourcesList()}</div>
+      <div class="read">${groupedSources(f.rules)}</div>
     </div>`;
 
   const root = $('#md');

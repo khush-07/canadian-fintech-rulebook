@@ -1,0 +1,43 @@
+id: fintrac-business-relationship
+title: "FINTRAC: Account purpose and ongoing monitoring"
+regulator: FINTRAC
+law: pcmltfa
+features: [onboarding-kyc, accounts, payments]
+products: [deposits, cards, prepaid, payments, investing, crypto]
+synonyms: [business relationship, ongoing monitoring, intended use, purpose of account, transaction monitoring, kyc refresh, periodic review, risk rating]
+
+tldr: >
+  Opening an account starts a "business relationship". Record what the
+  customer intends to use the account for, then keep monitoring that their
+  activity matches, based on their risk level.
+
+applies:
+  always: "From the moment an account is opened (or, without an account, the second time you must verify the client's identity)."
+
+requirements:
+  - text: "A business relationship starts when you open an account for a client, or the second time you're required to verify their identity, whichever comes first."
+    cite: [{source: pcmltfr, pinpoint: "s.4.1(a)–(b)", section: "4.1"}]
+  - text: "Record the purpose and intended nature of the business relationship."
+    cite: [{source: pcmltfr, pinpoint: "s.145", section: "145"}]
+  - text: "Monitor the relationship periodically, based on risk, to detect suspicious transactions, keep client information up to date, reassess risk, and check that activity matches what you know about the client."
+    cite: [{source: pcmltfr, pinpoint: "s.123.1(a)–(d)", section: "123.1"}]
+
+design_implications:
+  do:
+    - text: "Ask 'What will you mainly use this account for?' with simple choices (everyday spending, saving, sending money abroad, business income…) and an 'Other' field."
+      cite: [{source: pcmltfr, pinpoint: "s.145", section: "145"}, {source: our-guidance}]
+    - text: "Ask about expected activity (e.g. monthly deposits, international transfers) so monitoring has a baseline to compare against."
+      cite: [{source: pcmltfr, pinpoint: "s.123.1(d)", section: "123.1"}, {source: our-guidance}]
+    - text: "Design an in-app 'Update your information' flow for periodic KYC refreshes instead of forcing a branch visit or support call."
+      cite: [{source: pcmltfr, pinpoint: "s.123.1(b)", section: "123.1"}, {source: our-guidance}]
+  dont:
+    - text: "Treat KYC as one-time. Information must be kept current for the life of the relationship."
+      cite: [{source: pcmltfr, pinpoint: "s.123.1(b)", section: "123.1"}]
+
+example: >
+  A customer said "everyday spending" at sign-up, but six months later
+  receives frequent large transfers from many people. Monitoring should flag
+  the mismatch for review.
+
+related: [fintrac-identity-verification, fintrac-third-party-determination, fintrac-pep-hio]
+last_verified: 2026-10-12
