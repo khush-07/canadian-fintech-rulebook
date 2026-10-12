@@ -1,0 +1,80 @@
+id: casl-consent
+title: "CASL: Consent to send commercial messages"
+regulator: CRTC
+law: casl
+features: [marketing-messages, onboarding, referrals, notifications]
+products: [all]
+synonyms: [opt in, marketing consent, email consent, sms consent, express consent, implied consent, pre-checked box, anti-spam]
+
+tldr: >
+  You need the recipient's consent before sending any commercial email, SMS or
+  DM. Consent can be express (they actively opted in) or implied (e.g. a
+  recent business relationship). If challenged, you have to prove it.
+
+applies:
+  always: >
+    Any message to an email, SMS, instant-messaging or similar account where
+    one purpose is to encourage a commercial activity (offers, promos,
+    "upgrade to premium", cross-sell).
+  also_if:
+    - condition: "You serve Quebec"
+      note: "Law 25 consent rules also apply to the personal info you use for targeting (rule coming soon)."
+  not_covered: >
+    Messages that ONLY do one of the things in s.6(6) — e.g. confirm a
+    transaction, give security info, or give factual notice about an account
+    or loan — don't need consent. They still need sender ID and an
+    unsubscribe mechanism.
+  exemptions:
+    - text: "Messages sent to a limited-access, secure account that only the provider can message (e.g. an in-app secure inbox in online banking) are exempt from s.6."
+      cite: [{source: ecpr-gic, pinpoint: "3(e)", section: "3"}]
+    - text: "Messages responding to a customer's own request, inquiry or complaint are exempt."
+      cite: [{source: ecpr-gic, pinpoint: "3(b)", section: "3"}]
+
+requirements:
+  - text: "Do not send a commercial electronic message without express or implied consent."
+    cite: [{source: casl, pinpoint: "s.6(1)(a)", section: "6"}]
+  - text: "When asking for express consent, clearly and simply state the purpose and who is asking."
+    cite:
+      - {source: casl, pinpoint: "s.10(1)", section: "10"}
+      - {source: ecpr-crtc, pinpoint: "s.4", section: "4"}
+  - text: "The consent request must include your business name, a mailing address plus a phone/email/web contact, and a statement that consent can be withdrawn."
+    cite: [{source: ecpr-crtc, pinpoint: "s.4(a)–(e)", section: "4"}]
+  - text: "Ask for consent separately for each activity — don't bundle it into Terms & Conditions acceptance."
+    cite:
+      - {source: ecpr-crtc, pinpoint: "s.4", section: "4"}
+      - {source: crtc-2012-548}
+  - text: "Express consent requires a positive action — pre-checked boxes are not accepted by the CRTC."
+    cite: [{source: crtc-2012-549}]
+  - text: "Implied consent from an existing business relationship is time-limited: 2 years after a purchase or after a contract ends, 6 months after an inquiry or application."
+    cite: [{source: casl, pinpoint: "s.10(9)(a), s.10(10)", section: "10"}]
+  - text: "Keep records — the sender bears the burden of proving consent."
+    cite: [{source: casl, pinpoint: "s.13", section: "13"}]
+
+design_implications:
+  do:
+    - text: "Unchecked opt-in checkbox with a specific label, e.g. 'Send me offers and product news from Acme Financial by email'."
+      cite: [{source: crtc-2012-549}]
+    - text: "Separate checkboxes per channel or purpose (email offers vs SMS offers)."
+      cite: [{source: our-guidance}]
+    - text: "Log consent: timestamp, channel, the exact wording shown, and app/form version."
+      cite: [{source: casl, pinpoint: "s.13", section: "13"}, {source: our-guidance}]
+    - text: "Prefer express consent even for existing customers — implied consent expires and must be tracked."
+      cite: [{source: our-guidance}]
+  dont:
+    - text: "Pre-check the marketing box or hide it inside T&Cs."
+      cite: [{source: crtc-2012-549}]
+    - text: "Put a cross-sell offer inside a 'transactional' message (e.g. a payment confirmation) to customers who haven't consented — it becomes a commercial message."
+      cite: [{source: casl, pinpoint: "s.1(2), s.6(6)", section: "1"}]
+
+example: >
+  A neobank adds "Get 2% on your savings — upgrade now!" to its e-Transfer
+  confirmation email. The confirmation alone would be exempt from consent
+  under s.6(6)(b), but the promo makes it a commercial message, so consent
+  is now required.
+
+penalties:
+  text: "Up to $10M per violation for businesses, $1M for individuals."
+  cite: [{source: casl, pinpoint: "s.20(4)", section: "20"}]
+
+related: [casl-unsubscribe, casl-referral-messages, competition-misleading-messages]
+last_verified: 2026-10-12

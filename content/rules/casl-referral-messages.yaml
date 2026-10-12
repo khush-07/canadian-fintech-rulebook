@@ -1,0 +1,57 @@
+id: casl-referral-messages
+title: "CASL: Refer-a-friend messages"
+regulator: CRTC
+law: casl
+features: [referrals, marketing-messages, growth]
+products: [all]
+synonyms: [refer a friend, referral program, invite friends, referral bonus, tell a friend, share invite]
+
+tldr: >
+  You can send ONE message to a referred person without their consent, but
+  only if the referrer knows both you and them, and the message names the
+  referrer. After that, you need the friend's own consent.
+
+applies:
+  always: "Any referral or invite flow where YOUR system sends the message (email/SMS) to the friend."
+  unclear:
+    text: >
+      If the user shares a link from their own phone or email (native share
+      sheet), the user is the sender — but you may still "cause or permit" the
+      message if you pre-write promotional text.
+    cite: [{source: casl, pinpoint: "s.6(1) 'cause or permit to be sent'", section: "6"}]
+
+requirements:
+  - text: "Only the FIRST message after a referral is exempt from consent."
+    cite: [{source: ecpr-gic, pinpoint: "s.4(1)", section: "4"}]
+  - text: "The referrer must have an existing business, non-business, family or personal relationship with BOTH your company and the friend."
+    cite: [{source: ecpr-gic, pinpoint: "s.4(1)", section: "4"}]
+  - text: "The message must include the referrer's full name and say it is being sent because of their referral."
+    cite: [{source: ecpr-gic, pinpoint: "s.4(1)", section: "4"}]
+  - text: "The message still needs sender ID and an unsubscribe mechanism."
+    cite: [{source: casl, pinpoint: "s.6(2)", section: "6"}]
+
+design_implications:
+  do:
+    - text: "Referral email template: 'Priya Sharma thought you'd like Acme — she referred you.'"
+      cite: [{source: ecpr-gic, pinpoint: "s.4(1)", section: "4"}]
+    - text: "Use the first message to ask for consent ('Want updates from us? Opt in') before any follow-ups."
+      cite: [{source: our-guidance}]
+    - text: "Prefer native share sheets with neutral, editable text."
+      cite: [{source: our-guidance}]
+  dont:
+    - text: "Send automated reminder sequences ('Your $50 is waiting!') to referred friends who never opted in."
+      cite: [{source: ecpr-gic, pinpoint: "s.4(1) 'first'", section: "4"}]
+    - text: "Upload a user's whole contact list and message everyone — the user can't have a relationship with every contact verified."
+      cite: [{source: our-guidance}]
+
+example: >
+  User invites 3 friends. Your system sends each one invite email naming
+  the user. Friend #2 doesn't sign up. A reminder 5 days later is a second
+  message and is NOT covered by the referral exemption.
+
+penalties:
+  text: "Up to $10M per violation for businesses, $1M for individuals."
+  cite: [{source: casl, pinpoint: "s.20(4)", section: "20"}]
+
+related: [casl-consent, casl-unsubscribe]
+last_verified: 2026-10-12

@@ -1,0 +1,73 @@
+# Source registry — every citation on the site points to one of these.
+#
+# authority:
+#   binding       = statute or regulation (the law itself)
+#   interpretive  = regulator guidance/bulletins (how the regulator reads the law)
+#   best_practice = our recommendation; never presented as a legal requirement
+#
+# pinpoint_url_pattern: Justice Laws supports per-section URLs, so citations
+# deep-link straight to the exact section, e.g. .../E-1.6/section-11.html
+#
+# currency_date = "current to" date shown on the official source when last checked
+# last_checked  = date a person on our team last re-read the source
+
+casl:
+  title: "Canada's Anti-Spam Legislation (CASL), S.C. 2010, c. 23"
+  short: CASL
+  regulator: CRTC
+  authority: binding
+  url: "https://laws-lois.justice.gc.ca/eng/acts/E-1.6/"
+  pinpoint_url_pattern: "https://laws-lois.justice.gc.ca/eng/acts/E-1.6/section-{section}.html"
+  currency_date: 2026-09-21
+  last_checked: 2026-10-12
+
+ecpr-crtc:
+  title: "Electronic Commerce Protection Regulations (CRTC), SOR/2012-36"
+  short: "CRTC Regulations"
+  regulator: CRTC
+  authority: binding
+  url: "https://laws-lois.justice.gc.ca/eng/regulations/SOR-2012-36/"
+  pinpoint_url_pattern: "https://laws-lois.justice.gc.ca/eng/regulations/SOR-2012-36/section-{section}.html"
+  last_checked: 2026-10-12
+
+ecpr-gic:
+  title: "Electronic Commerce Protection Regulations, SOR/2013-221"
+  short: "GIC Regulations"
+  regulator: "Industry Canada (ISED)"
+  authority: binding
+  url: "https://laws-lois.justice.gc.ca/eng/regulations/SOR-2013-221/"
+  pinpoint_url_pattern: "https://laws-lois.justice.gc.ca/eng/regulations/SOR-2013-221/section-{section}.html"
+  last_checked: 2026-10-12
+
+crtc-2012-549:
+  title: "CRTC Compliance and Enforcement Information Bulletin 2012-549 (toggling as a means of obtaining express consent)"
+  short: "CRTC Bulletin 2012-549"
+  regulator: CRTC
+  authority: interpretive
+  url: "https://crtc.gc.ca/eng/archive/2012/2012-549.htm"
+  last_checked: 2026-10-12
+  needs_review: true   # official page blocked automated fetch; content confirmed only via secondary commentary
+
+crtc-2012-548:
+  title: "CRTC Compliance and Enforcement Information Bulletin 2012-548 (interpretation of the Electronic Commerce Protection Regulations)"
+  short: "CRTC Bulletin 2012-548"
+  regulator: CRTC
+  authority: interpretive
+  url: "https://crtc.gc.ca/eng/archive/2012/2012-548.htm"
+  last_checked: 2026-10-12
+  needs_review: true   # same as above
+
+competition-act:
+  title: "Competition Act, R.S.C. 1985, c. C-34"
+  short: "Competition Act"
+  regulator: "Competition Bureau"
+  authority: binding
+  url: "https://laws-lois.justice.gc.ca/eng/acts/C-34/"
+  pinpoint_url_pattern: "https://laws-lois.justice.gc.ca/eng/acts/C-34/section-{section}.html"
+  last_checked: 2026-10-12
+
+our-guidance:
+  title: "Fintech Rules editorial team recommendation"
+  short: "Best practice"
+  authority: best_practice
+  url: null

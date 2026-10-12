@@ -1,0 +1,645 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Canadian Fintech Rulebook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600;8..60,700&display=swap">
+<style>
+/* Layout: a single reading column (statute-book feel) under a slim tool bar; citations are inline section numbers that open source cards. */
+:root {
+  --bg: #F5F7F6;
+  --surface: #FFFFFF;
+  --ink: #15231F;
+  --muted: #586A64;
+  --line: #D7E0DC;
+  --accent: #1C6852;
+  --accent-ink: #FFFFFF;
+  --accent-soft: #E2EFEA;
+  --guide: #2D5C9C;
+  --guide-soft: #E5ECF7;
+  --best: #855700;
+  --best-soft: #FAF0DA;
+  --warn: #A04A08;
+  --warn-soft: #FCEADA;
+  --shadow: 0 10px 30px rgba(15, 35, 30, .14);
+  --f-display: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --f-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+  --r: 8px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E1614; --surface: #15201D; --ink: #E3ECE8; --muted: #98AAA4; --line: #26352F;
+    --accent: #6BC8A8; --accent-ink: #0E1614; --accent-soft: #1A322A;
+    --guide: #93B6EC; --guide-soft: #1B2638; --best: #E5B85C; --best-soft: #332810;
+    --warn: #F1A766; --warn-soft: #3A2513; --shadow: 0 10px 30px rgba(0,0,0,.5);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E1614; --surface: #15201D; --ink: #E3ECE8; --muted: #98AAA4; --line: #26352F;
+  --accent: #6BC8A8; --accent-ink: #0E1614; --accent-soft: #1A322A;
+  --guide: #93B6EC; --guide-soft: #1B2638; --best: #E5B85C; --best-soft: #332810;
+  --warn: #F1A766; --warn-soft: #3A2513; --shadow: 0 10px 30px rgba(0,0,0,.5);
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font-family: var(--f-body); font-size: 16px; line-height: 1.6; }
+a { color: var(--accent); text-underline-offset: 3px; }
+a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+h1, h2, h3 { font-family: var(--f-display); text-wrap: balance; line-height: 1.2; margin: 0; }
+.mono { font-family: var(--f-mono); font-size: .86em; }
+.wrap { max-width: 860px; margin: 0 auto; padding-inline: 20px; }
+.read { max-width: 720px; }
+
+/* Top bar */
+.bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: var(--surface); border-bottom: 1px solid var(--line); }
+.bar .wrap { display: flex; align-items: center; gap: 16px; padding-block: 10px; }
+.brand { display: flex; align-items: center; gap: 10px; color: var(--ink); text-decoration: none; font-weight: 600; white-space: nowrap; }
+.brand .mark { font-family: var(--f-display); font-size: 22px; width: 32px; height: 32px; display: grid; place-items: center; background: var(--accent); color: var(--accent-ink); border-radius: 6px; }
+.brand small { display: block; font-weight: 400; color: var(--muted); font-size: 12px; line-height: 1.2; }
+.bar .search { flex: 1; min-width: 0; }
+
+/* Search */
+.search { position: relative; }
+.search input { width: 100%; font: inherit; color: var(--ink); background: var(--bg); border: 1px solid var(--line); border-radius: var(--r); padding: 9px 56px 9px 14px; }
+.search input::placeholder { color: var(--muted); }
+.search .kbd { position: absolute; right: 10px; top: 50%; transform: translateY(-50%); font-family: var(--f-mono); font-size: 12px; color: var(--muted); border: 1px solid var(--line); border-radius: 4px; padding: 0 5px; pointer-events: none; }
+.search.big input { font-size: 18px; padding: 16px 64px 16px 18px; background: var(--surface); border-width: 1.5px; box-shadow: 0 1px 0 var(--line); }
+.drop { position: absolute; left: 0; right: 0; top: calc(100% + 6px); background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); box-shadow: var(--shadow); padding: 6px; z-index: 30; max-height: 70vh; overflow: auto; }
+.drop h4 { margin: 8px 10px 4px; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+.drop a { display: flex; flex-direction: column; gap: 1px; padding: 8px 10px; border-radius: 6px; text-decoration: none; color: var(--ink); }
+.drop a span { color: var(--muted); font-size: 13px; line-height: 1.4; }
+.drop a.active, .drop a:hover { background: var(--accent-soft); }
+.drop .all { color: var(--accent); font-weight: 500; flex-direction: row; }
+
+/* Generic pieces */
+.eyebrow { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+.pill { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; padding: 2px 9px; border-radius: 999px; background: var(--accent-soft); color: var(--accent); white-space: nowrap; }
+.badge { display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; padding: 1px 7px; border-radius: 4px; white-space: nowrap; }
+.b-law { background: var(--accent-soft); color: var(--accent); }
+.b-guide { background: var(--guide-soft); color: var(--guide); }
+.b-best { background: var(--best-soft); color: var(--best); }
+.btn { display: inline-flex; align-items: center; gap: 8px; font: inherit; font-size: 14px; font-weight: 500; padding: 8px 14px; border-radius: var(--r); border: 1px solid var(--line); background: var(--surface); color: var(--ink); cursor: pointer; text-decoration: none; }
+.btn:hover { border-color: var(--accent); }
+.btn.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { font: inherit; font-size: 14px; padding: 4px 12px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); cursor: pointer; text-decoration: none; }
+.chip:hover, .chip[aria-pressed="true"] { border-color: var(--accent); color: var(--accent); background: var(--accent-soft); }
+.chip.muted { color: var(--muted); cursor: default; background: transparent; border-style: dashed; }
+.crumbs { font-size: 14px; color: var(--muted); display: flex; flex-wrap: wrap; gap: 6px; }
+.crumbs a { color: var(--muted); }
+main { padding-block: 32px 64px; }
+section.block { margin-top: 40px; }
+section.block > h2 { font-size: 24px; margin-bottom: 14px; }
+.meta { display: flex; flex-wrap: wrap; gap: 8px 16px; font-size: 14px; color: var(--muted); align-items: center; }
+.pending { background: var(--warn-soft); color: var(--warn); border-radius: var(--r); padding: 10px 14px; font-size: 14px; }
+.toast { position: fixed; left: 50%; bottom: calc(24px + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%); background: var(--ink); color: var(--bg); padding: 10px 16px; border-radius: var(--r); font-size: 14px; z-index: 60; max-width: calc(100% - 32px); }
+
+/* Home */
+.hero { padding-block: 24px 8px; }
+.hero h1 { font-size: clamp(30px, 5vw, 44px); margin: 10px 0 20px; max-width: 18ch; }
+.hero .chips { margin-top: 14px; align-items: center; }
+.hero .chips .label { font-size: 14px; color: var(--muted); }
+.features { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-top: 1px solid var(--line); }
+.feature { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 14px 4px; border-bottom: 1px solid var(--line); text-decoration: none; color: var(--ink); min-width: 0; }
+.features .feature:nth-child(odd) { padding-right: 20px; }
+.features .feature:nth-child(even) { padding-left: 20px; border-left: 1px solid var(--line); }
+.feature strong { display: block; font-weight: 600; }
+.feature span { color: var(--muted); font-size: 14px; }
+a.feature:hover strong { color: var(--accent); }
+.feature .status { font-size: 12px; color: var(--muted); white-space: nowrap; }
+.feature.live .status { color: var(--accent); font-weight: 600; }
+.feature.soon { opacity: .62; }
+.legend { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.legend div { display: flex; flex-direction: column; gap: 6px; align-items: flex-start; font-size: 14px; color: var(--muted); }
+
+/* Rule page */
+.rule-head h1 { font-size: clamp(28px, 4.4vw, 38px); margin: 12px 0 14px; }
+.tldr { font-family: var(--f-display); font-size: 21px; line-height: 1.5; margin: 0 0 16px; }
+.applies { display: grid; gap: 10px; }
+.apply { display: grid; grid-template-columns: 132px minmax(0, 1fr); gap: 14px; padding: 12px 14px; border-radius: var(--r); background: var(--surface); border: 1px solid var(--line); }
+.apply .tag { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: .05em; padding-top: 3px; }
+.apply.always .tag { color: var(--accent); }
+.apply.also .tag { color: var(--best); }
+.apply.not .tag { color: var(--muted); }
+.apply.unclear .tag { color: var(--guide); }
+.apply p { margin: 0; }
+.apply .cond { font-weight: 600; }
+.reqs { list-style: none; padding: 0; margin: 0; border-top: 1px solid var(--line); }
+.reqs li { padding: 12px 0 12px 30px; border-bottom: 1px solid var(--line); position: relative; }
+.reqs li::before { content: ""; position: absolute; left: 4px; top: 18px; width: 12px; height: 12px; border: 1.5px solid var(--accent); border-radius: 3px; }
+.dodont { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.dodont > div { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 14px 16px; min-width: 0; }
+.dodont h3 { font-family: var(--f-body); font-size: 13px; text-transform: uppercase; letter-spacing: .06em; margin-bottom: 6px; }
+.dodont .do h3 { color: var(--accent); }
+.dodont .dont h3 { color: var(--warn); }
+.dodont ul { margin: 0; padding-left: 18px; }
+.dodont li { margin: 8px 0; }
+.example { border-left: 3px solid var(--accent); padding: 4px 0 4px 16px; font-family: var(--f-display); font-size: 18px; margin: 0; }
+.actions { display: flex; flex-wrap: wrap; gap: 10px; }
+
+/* Citations */
+.cites { white-space: nowrap; }
+.cite { font-family: var(--f-mono); font-size: 11px; font-weight: 500; line-height: 1; vertical-align: super; margin-left: 2px; padding: 2px 4px; min-width: 18px; border-radius: 4px; border: 1px solid var(--accent); background: var(--accent-soft); color: var(--accent); cursor: pointer; }
+.cite.c-guide { border-color: var(--guide); background: var(--guide-soft); color: var(--guide); }
+.cite.c-best { border-color: var(--best); background: var(--best-soft); color: var(--best); border-style: dashed; }
+.cite.c-pending::after { content: "!"; margin-left: 2px; color: var(--warn); }
+.pop { position: absolute; z-index: 50; width: min(360px, calc(100vw - 32px)); background: var(--surface); border: 1px solid var(--line); border-radius: 10px; box-shadow: var(--shadow); padding: 14px 16px; font-size: 14px; }
+.pop .top { display: flex; align-items: center; gap: 8px; }
+.pop .top .x { margin-left: auto; font: inherit; font-size: 20px; line-height: 1; background: none; border: 0; color: var(--muted); cursor: pointer; padding: 2px 6px; }
+.pop .title { font-family: var(--f-display); font-size: 17px; font-weight: 600; margin: 10px 0 2px; line-height: 1.35; }
+.pop .pin { font-family: var(--f-mono); color: var(--ink); background: var(--bg); display: inline-block; padding: 1px 6px; border-radius: 4px; }
+.pop p { margin: 8px 0; color: var(--muted); }
+.pop dl { display: grid; grid-template-columns: auto 1fr; gap: 2px 12px; margin: 8px 0 12px; color: var(--muted); }
+.pop dd { margin: 0; color: var(--ink); font-variant-numeric: tabular-nums; }
+.pop .pending { margin: 8px 0; }
+@media (max-width: 600px) {
+  .pop { position: fixed; left: 0 !important; right: 0; top: auto !important; bottom: 0; width: 100%; border-radius: 14px 14px 0 0; padding-bottom: calc(18px + env(safe-area-inset-bottom, 0px)); }
+}
+.sources { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; }
+.sources li { display: grid; grid-template-columns: 28px minmax(0, 1fr); gap: 10px; font-size: 14px; }
+.sources .n { font-family: var(--f-mono); color: var(--muted); padding-top: 1px; }
+.sources .src-title { color: var(--ink); font-weight: 500; }
+.sources .sub { color: var(--muted); display: flex; flex-wrap: wrap; gap: 4px 12px; margin-top: 2px; }
+.sources li:target { background: var(--accent-soft); border-radius: 6px; }
+
+/* Feature page */
+.rule-cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.rule-card { display: flex; flex-direction: column; gap: 8px; padding: 16px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); text-decoration: none; color: var(--ink); min-width: 0; }
+.rule-card:hover { border-color: var(--accent); }
+.rule-card h3 { font-size: 18px; }
+.rule-card p { margin: 0; color: var(--muted); font-size: 14px; }
+.rule-card .foot { margin-top: auto; font-size: 13px; color: var(--muted); }
+.md h2 { font-size: 24px; margin: 40px 0 14px; }
+.md p, .md li { max-width: 70ch; }
+.md table { border-collapse: collapse; width: 100%; font-size: 14px; background: var(--surface); }
+.md th, .md td { text-align: left; border-bottom: 1px solid var(--line); padding: 9px 10px; vertical-align: top; }
+.md th { font-size: 12px; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); font-weight: 600; }
+.table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: var(--r); }
+.md ul:has(input[type=checkbox]) { list-style: none; padding-left: 0; }
+.md li label { display: flex; gap: 10px; align-items: flex-start; cursor: pointer; padding: 3px 0; }
+.md li input[type=checkbox] { margin-top: 5px; accent-color: var(--accent); width: 16px; height: 16px; flex: none; }
+.md li label:has(input:checked) { color: var(--muted); text-decoration: line-through; }
+.check-tools { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; margin: -4px 0 12px; font-size: 14px; color: var(--muted); }
+.coming { margin-top: 12px; }
+
+/* Results */
+.result { display: block; padding: 16px 0; border-bottom: 1px solid var(--line); text-decoration: none; color: var(--ink); }
+.result h3 { font-size: 19px; margin: 6px 0 4px; }
+.result:hover h3 { color: var(--accent); }
+.result p { margin: 0; color: var(--muted); font-size: 15px; }
+
+footer { border-top: 1px solid var(--line); padding-block: 20px 32px; color: var(--muted); font-size: 13px; }
+footer .wrap { display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between; }
+
+.fallback { position: fixed; inset: auto 16px 16px 16px; z-index: 70; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; box-shadow: var(--shadow); padding: 14px; max-width: 640px; margin: 0 auto; }
+.fallback textarea { width: 100%; height: 160px; font-family: var(--f-mono); font-size: 13px; background: var(--bg); color: var(--ink); border: 1px solid var(--line); border-radius: 6px; padding: 8px; }
+
+@media (max-width: 680px) {
+  .features, .rule-cards, .dodont, .legend { grid-template-columns: 1fr; }
+  .features .feature:nth-child(n) { padding-inline: 4px; border-left: 0; }
+  .apply { grid-template-columns: 1fr; gap: 4px; }
+  .brand small { display: none; }
+  .search .kbd { display: none; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .pop, .drop { animation: rise .14s ease-out; }
+  @keyframes rise { from { transform: translateY(4px); opacity: .6; } to { transform: none; opacity: 1; } }
+  @media (max-width: 600px) { .pop { animation: none; } }
+}
+</style>
+
+<header class="bar">
+  <div class="wrap">
+    <a class="brand" href="#home"><span class="mark" aria-hidden="true">§</span><span>Fintech Rulebook<small>Canadian rules for product teams</small></span></a>
+    <div class="search" id="bar-search">
+      <input id="q-bar" type="search" placeholder="Search rules, terms, or questions" autocomplete="off" aria-label="Search rules">
+      <span class="kbd">⌘K</span>
+    </div>
+  </div>
+</header>
+
+<main id="app" class="wrap" aria-live="polite">
+  <p>Loading rules…</p>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Plain-English summaries for product and design teams. Not legal advice. Always confirm with your compliance team.</span>
+    <span>Prototype · nothing you do here is saved</span>
+  </div>
+</footer>
+
+<div id="pop" class="pop" role="dialog" aria-modal="false" hidden></div>
+<div id="toast" class="toast" role="status" hidden></div>
+<div id="fallback" class="fallback" hidden>
+  <p style="margin:0 0 8px">Copying isn't available here. Select the text below and copy it.</p>
+  <textarea id="fallback-text" readonly></textarea>
+  <div style="margin-top:8px"><button class="btn" id="fallback-close">Close</button></div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@7.0.0/dist/fuse.min.js"></script>
+<script>
+// Content manifest. In the real site the build step will discover these files.
+const RULE_IDS = ['casl-consent', 'casl-unsubscribe', 'casl-referral-messages', 'competition-misleading-messages'];
+const FEATURE_IDS = ['marketing-messages'];
+const FEATURE_TILES = [
+  { id: 'marketing-messages', name: 'Marketing messages', blurb: 'Email, SMS, push and in-app promos' },
+  { name: 'Onboarding & KYC', blurb: 'ID checks, PEP and sanctions screening' },
+  { name: 'Payments & transfers', blurb: 'e-Transfer, EFTs, real-time payments' },
+  { name: 'Fees & pricing', blurb: 'Disclosures and fee change notices' },
+  { name: 'Lending & BNPL', blurb: 'Cost of borrowing, interest rate cap' },
+  { name: 'Complaints & support', blurb: 'Complaint handling, escalation' },
+  { name: 'AI & automated decisions', blurb: 'Model risk, explaining decisions' },
+  { name: 'Vendors & cloud', blurb: 'Third-party and technology risk' },
+  { name: 'Accounts & deposits', blurb: 'Deposit insurance, account terms' },
+  { name: 'Data & privacy', blurb: 'Consent, retention, breaches' },
+];
+const EXAMPLES = ['unsubscribe', 'pre-checked box', 'refer a friend', 'push notifications', 'drip pricing'];
+const AUTH = {
+  binding: { label: 'Law', cls: 'b-law', cite: '', note: 'Legally binding. This is the law itself.' },
+  interpretive: { label: 'Regulator guidance', cls: 'b-guide', cite: 'c-guide', note: 'How the regulator interprets the law. Not the law itself, but it shows how they enforce it.' },
+  best_practice: { label: 'Best practice', cls: 'b-best', cite: 'c-best', note: "Our team's recommendation. Not a legal requirement, so there is no official text to check." },
+};
+
+const DATA = { sources: {}, rules: {}, features: {} };
+let fuse, CTX = null, lastQuery = '', regFilter = null;
+
+const $ = (s, el = document) => el.querySelector(s);
+const $$ = (s, el = document) => [...el.querySelectorAll(s)];
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const fmtDate = d => !d ? '' : (d instanceof Date ? d.toISOString().slice(0, 10) : String(d));
+const plural = (n, w) => `${n} ${w}${n === 1 ? '' : 's'}`;
+const app = $('#app');
+
+async function load() {
+  // Locally the page lives in /prototype/ next to /content/; when published they sit side by side.
+  const base = location.pathname.includes('/prototype/') ? '../' : '';
+  const get = async p => { const r = await fetch(base + p); if (!r.ok) throw new Error(`Couldn't load ${p}`); return r.text(); };
+  DATA.sources = jsyaml.load(await get('content/sources.yaml'));
+  await Promise.all(RULE_IDS.map(async id => { DATA.rules[id] = jsyaml.load(await get(`content/rules/${id}.yaml`)); }));
+  await Promise.all(FEATURE_IDS.map(async id => {
+    const raw = await get(`content/features/${id}.md`);
+    const m = raw.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/);
+    const fm = jsyaml.load(m[1]); fm.body = m[2]; DATA.features[id] = fm;
+  }));
+}
+
+/* ---------- Citations ---------- */
+function allCites(obj, out = []) {
+  if (Array.isArray(obj)) obj.forEach(o => allCites(o, out));
+  else if (obj && typeof obj === 'object' && !(obj instanceof Date)) {
+    for (const [k, v] of Object.entries(obj)) {
+      if (k === 'cite' && Array.isArray(v)) out.push(...v); else allCites(v, out);
+    }
+  }
+  return out;
+}
+const src = c => DATA.sources[c.source] || { title: c.source, short: c.source, authority: 'binding' };
+const citeUrl = c => { const s = src(c); return (c.section && s.pinpoint_url_pattern) ? s.pinpoint_url_pattern.replace('{section}', c.section) : s.url; };
+const citeLabel = c => src(c).short + (c.pinpoint ? ' ' + c.pinpoint : '');
+
+function cite(cites) {
+  if (!cites || !cites.length || !CTX) return '';
+  return '<span class="cites">' + cites.map(c => {
+    const key = c.source + '|' + (c.pinpoint || '');
+    let n = CTX.map.get(key);
+    if (!n) { CTX.list.push(c); n = CTX.list.length; CTX.map.set(key, n); }
+    const s = src(c);
+    const cls = [AUTH[s.authority]?.cite, s.needs_review ? 'c-pending' : ''].join(' ');
+    return `<button type="button" class="cite ${cls}" data-n="${n}" aria-label="Source ${n}: ${esc(citeLabel(c))}">${n}</button>`;
+  }).join('') + '</span>';
+}
+
+function sourcesList() {
+  if (!CTX || !CTX.list.length) return '';
+  return `<section class="block" id="sources"><h2>Sources on this page</h2>
+    <p class="meta" style="margin:-6px 0 14px">Tap any number in the text to see its source. Links open the exact section of the official text.</p>
+    <ol class="sources">${CTX.list.map((c, i) => {
+      const s = src(c), a = AUTH[s.authority] || AUTH.binding, url = citeUrl(c);
+      return `<li id="src-${i + 1}"><span class="n">${i + 1}</span><div>
+        <span class="badge ${a.cls}">${a.label}</span>
+        ${url ? `<a class="src-title" href="${esc(url)}" target="_blank" rel="noopener">${esc(s.title)} ↗</a>` : `<span class="src-title">${esc(s.title)}</span>`}
+        <div class="sub">${c.pinpoint ? `<span class="mono">${esc(c.pinpoint)}</span>` : ''}
+          ${s.last_checked ? `<span>Last checked ${fmtDate(s.last_checked)}</span>` : ''}
+          ${s.needs_review ? `<span style="color:var(--warn)">Pending re-verification</span>` : ''}</div>
+      </div></li>`;
+    }).join('')}</ol></section>`;
+}
+
+const pop = $('#pop');
+let popFor = null;
+function openPop(btn) {
+  const c = CTX?.list[+btn.dataset.n - 1]; if (!c) return;
+  const s = src(c), a = AUTH[s.authority] || AUTH.binding, url = citeUrl(c);
+  pop.innerHTML = `
+    <div class="top"><span class="badge ${a.cls}">${a.label}</span><span class="meta">Source ${btn.dataset.n}</span>
+      <button class="x" type="button" aria-label="Close">×</button></div>
+    <div class="title">${esc(s.title)}</div>
+    ${c.pinpoint ? `<span class="pin">${esc(c.pinpoint)}</span>` : ''}
+    <p>${a.note}</p>
+    ${s.needs_review ? `<div class="pending">Pending re-verification. We haven't yet confirmed this against the official page, so check it yourself before relying on it.</div>` : ''}
+    ${s.authority !== 'best_practice' ? `<dl>
+      ${s.regulator ? `<dt>Regulator</dt><dd>${esc(s.regulator)}</dd>` : ''}
+      ${s.currency_date ? `<dt>Law current to</dt><dd>${fmtDate(s.currency_date)}</dd>` : ''}
+      ${s.last_checked ? `<dt>We last checked</dt><dd>${fmtDate(s.last_checked)}</dd>` : ''}
+    </dl>` : ''}
+    ${url ? `<a class="btn primary" href="${esc(url)}" target="_blank" rel="noopener">Open official text ↗</a>` : ''}`;
+  pop.hidden = false; popFor = btn;
+  if (window.innerWidth > 600) {
+    const r = btn.getBoundingClientRect(), w = pop.offsetWidth;
+    const left = Math.max(16, Math.min(r.left + window.scrollX - 20, window.scrollX + document.documentElement.clientWidth - w - 16));
+    let top = r.bottom + window.scrollY + 8;
+    if (r.bottom + pop.offsetHeight + 16 > window.innerHeight && r.top > pop.offsetHeight + 16) top = r.top + window.scrollY - pop.offsetHeight - 8;
+    pop.style.left = left + 'px'; pop.style.top = top + 'px';
+  }
+  $('.x', pop).focus();
+}
+function closePop() { if (!pop.hidden) { pop.hidden = true; popFor?.focus({ preventScroll: true }); popFor = null; } }
+document.addEventListener('click', e => {
+  const b = e.target.closest('.cite');
+  if (b) { e.preventDefault(); popFor === b && !pop.hidden ? closePop() : openPop(b); return; }
+  if (e.target.closest('.x')) { closePop(); return; }
+  if (!pop.hidden && !e.target.closest('#pop')) closePop();
+});
+
+/* ---------- Copy helpers ---------- */
+function toast(msg) { const t = $('#toast'); t.textContent = msg; t.hidden = false; clearTimeout(toast.t); toast.t = setTimeout(() => t.hidden = true, 2600); }
+function copy(text, msg) {
+  const fail = () => { $('#fallback-text').value = text; $('#fallback').hidden = false; $('#fallback-text').select(); };
+  try { navigator.clipboard.writeText(text).then(() => toast(msg), fail); } catch { fail(); }
+}
+$('#fallback-close').onclick = () => $('#fallback').hidden = true;
+
+function prdText(r) {
+  const lines = [`${r.title}: acceptance criteria`, ''];
+  r.requirements.forEach(q => {
+    const refs = (q.cite || []).filter(c => src(c).authority !== 'best_practice').map(citeLabel).join('; ');
+    lines.push(`- [ ] ${q.text}${refs ? ` (${refs})` : ''}`);
+  });
+  lines.push('', `Source: Fintech Rulebook, last verified ${fmtDate(r.last_verified)}. Plain-English summary, not legal advice. Confirm with your compliance team.`);
+  return lines.join('\n');
+}
+function issueText(kind, title) {
+  return `Issue report: Fintech Rulebook\nPage: ${title} (${kind})\nWhat looks wrong:\n\nOfficial source that shows it:\n`;
+}
+
+/* ---------- Views ---------- */
+function regulatorPill(r) { return `<span class="pill">${esc(r)}</span>`; }
+
+function renderHome() {
+  $('#bar-search').hidden = true;
+  const live = id => id && DATA.features[id];
+  app.innerHTML = `
+    <section class="hero read">
+      <div class="eyebrow">For product and design teams in Canadian fintech</div>
+      <h1>What do the rules say about the feature you're building?</h1>
+      <div class="search big" id="home-search">
+        <input id="q-home" type="search" placeholder="Try “unsubscribe”, “pre-checked box”, or “FINTRAC”" autocomplete="off" aria-label="Search rules">
+        <span class="kbd">⌘K</span>
+      </div>
+      <div class="chips"><span class="label">Try:</span>${EXAMPLES.map(x => `<button type="button" class="chip" data-q="${esc(x)}">${esc(x)}</button>`).join('')}</div>
+    </section>
+
+    <section class="block">
+      <h2>Start from what you're building</h2>
+      <div class="features">${FEATURE_TILES.map(f => live(f.id)
+        ? `<a class="feature live" href="#feature-${f.id}"><div><strong>${esc(f.name)}</strong><span>${esc(f.blurb)}</span></div><span class="status">${DATA.features[f.id].rules.length} rules →</span></a>`
+        : `<div class="feature soon"><div><strong>${esc(f.name)}</strong><span>${esc(f.blurb)}</span></div><span class="status">In progress</span></div>`).join('')}
+      </div>
+    </section>
+
+    <section class="block">
+      <h2>Every answer shows its source</h2>
+      <p class="read" style="margin-top:-4px;color:var(--muted)">Each requirement has a numbered citation. Tap it to see which law, regulation, or guidance it comes from, then open the exact section on the official government site.</p>
+      <div class="legend">${Object.values(AUTH).map(a => `<div><span class="badge ${a.cls}">${a.label}</span>${a.note}</div>`).join('')}</div>
+    </section>`;
+  attachSearch($('#q-home'), $('#home-search'));
+  $$('.chip[data-q]').forEach(b => b.onclick = () => { lastQuery = b.dataset.q; regFilter = null; go('search'); });
+}
+
+function applyRow(cls, tag, html) { return `<div class="apply ${cls}"><div class="tag">${tag}</div><div>${html}</div></div>`; }
+
+function renderRule(id) {
+  const r = DATA.rules[id]; if (!r) return renderMissing();
+  CTX = { list: [], map: new Map() };
+  const law = DATA.sources[r.law];
+  const feat = (r.features || []).find(f => DATA.features[f]);
+  const ap = r.applies || {};
+  const asObj = v => typeof v === 'string' ? { text: v } : (v || {});
+  const unclear = asObj(ap.unclear), notCov = asObj(ap.not_covered);
+  const pending = allCites(r).some(c => src(c).needs_review) || r.penalties?.needs_review;
+
+  const applyHtml = [
+    ap.always && applyRow('always', 'Always applies', `<p>${esc(ap.always)}</p>`),
+    ...(ap.also_if || []).map(x => applyRow('also', 'Also applies if', `<p><span class="cond">${esc(x.condition)}.</span> ${esc(x.note)}${cite(x.cite)}</p>`)),
+    notCov.text && applyRow('not', 'Not covered', `<p>${esc(notCov.text)}${cite(notCov.cite)}</p>`),
+    ...(ap.exemptions || []).map(x => applyRow('not', 'Exempt', `<p>${esc(x.text)}${cite(x.cite)}</p>`)),
+    unclear.text && applyRow('unclear', 'Unsettled', `<p>${esc(unclear.text)}${cite(unclear.cite)}</p>`),
+  ].filter(Boolean).join('');
+
+  const reqHtml = r.requirements.map(q => `<li>${esc(q.text)}${cite(q.cite)}</li>`).join('');
+  const di = r.design_implications || {};
+  const list = arr => (arr || []).map(x => `<li>${esc(x.text)}${cite(x.cite)}</li>`).join('');
+  const penalties = r.penalties ? `<p style="margin:0">${esc(r.penalties.text)}${cite(r.penalties.cite)}</p>` : '';
+  const related = (r.related || []).filter(x => DATA.rules[x]);
+
+  app.innerHTML = `
+    <div class="read">
+      <nav class="crumbs" aria-label="Breadcrumb"><a href="#home">Home</a><span>/</span>${feat ? `<a href="#feature-${feat}">${esc(DATA.features[feat].title.split(' (')[0])}</a><span>/</span>` : ''}<span>${esc(r.title.split(': ')[0])}</span></nav>
+      <header class="rule-head" style="margin-top:18px">
+        <div class="meta">${regulatorPill(r.regulator)}${law ? `<span>${esc(law.title)}</span>` : ''}</div>
+        <h1>${esc(r.title)}</h1>
+        <p class="tldr">${esc(r.tldr)}</p>
+        <div class="meta"><span>Last verified ${fmtDate(r.last_verified)}</span><span>Not legal advice</span></div>
+        ${pending ? `<div class="pending" style="margin-top:14px">Some sources on this page are still pending re-verification. Their citation numbers are marked with “!”.</div>` : ''}
+      </header>
+
+      <section class="block"><h2>Does this apply to you?</h2><div class="applies">${applyHtml}</div></section>
+      <section class="block"><h2>What you must do</h2><ul class="reqs">${reqHtml}</ul></section>
+      <section class="block"><h2>What it means for design and product</h2>
+        <div class="dodont"><div class="do"><h3>Do</h3><ul>${list(di.do)}</ul></div><div class="dont"><h3>Don't</h3><ul>${list(di.dont)}</ul></div></div>
+      </section>
+      ${r.example ? `<section class="block"><h2>Example</h2><p class="example">${esc(r.example)}</p></section>` : ''}
+      ${penalties ? `<section class="block"><h2>Penalties</h2>${penalties}</section>` : ''}
+
+      <section class="block actions">
+        <button type="button" class="btn primary" id="copy-prd">Copy as PRD acceptance criteria</button>
+        <button type="button" class="btn" id="report">Report an issue</button>
+      </section>
+      ${related.length ? `<section class="block"><h2>Related rules</h2><div class="chips">${related.map(x => `<a class="chip" href="#rule-${x}">${esc(DATA.rules[x].title)}</a>`).join('')}</div></section>` : ''}
+      ${sourcesList()}
+    </div>`;
+  $('#copy-prd').onclick = () => copy(prdText(r), 'Copied acceptance criteria, with citations');
+  $('#report').onclick = () => copy(issueText('rule', r.title), 'Issue template copied. Paste it into an email to the content team.');
+}
+
+function renderFeature(id) {
+  const f = DATA.features[id]; if (!f) return renderMissing();
+  CTX = { list: [], map: new Map() };
+  let md = f.body.split(/\n## Sources on this page/)[0];
+  md = md.replace(/\[([a-z0-9-]{3,})\]/g, (m, rid) => DATA.rules[rid] ? `[${DATA.rules[rid].title} →](#rule-${rid})` : m);
+  const checklistMd = (f.body.split('## Pre-build checklist')[1] || '').split('\n## ')[0].trim();
+
+  // Sources for the whole feature = every citation in its rules, grouped by source.
+  f.rules.forEach(rid => allCites(DATA.rules[rid]).forEach(c => cite([c])));
+
+  app.innerHTML = `
+    <div>
+      <nav class="crumbs" aria-label="Breadcrumb"><a href="#home">Home</a><span>/</span><span>Feature guide</span></nav>
+      <header class="rule-head read" style="margin-top:18px">
+        <div class="eyebrow">Feature guide</div>
+        <h1>${esc(f.title)}</h1>
+        <p class="tldr">${esc(f.summary)}</p>
+        <div class="meta"><span>${f.rules.length} rules</span><span>Last verified ${fmtDate(f.last_verified)}</span><span>Not legal advice</span></div>
+      </header>
+      <div class="md" id="md">${marked.parse(md)}</div>
+      ${f.coming_soon?.length ? `<section class="block"><h2>Also relevant, coming soon</h2><div class="chips coming">${f.coming_soon.map(x => `<span class="chip muted">${esc(x.replace(/-/g, ' '))}</span>`).join('')}</div></section>` : ''}
+      <section class="block actions"><button type="button" class="btn" id="report">Report an issue</button></section>
+      <div class="read">${sourcesList()}</div>
+    </div>`;
+
+  const root = $('#md');
+  $$('table', root).forEach(t => { const w = document.createElement('div'); w.className = 'table-wrap'; t.replaceWith(w); w.appendChild(t); });
+
+  // Rule cards go right after the "In 30 seconds" section.
+  const h2s = $$('h2', root);
+  const cards = document.createElement('section');
+  cards.className = 'block';
+  cards.innerHTML = `<h2 style="font-size:24px;margin-bottom:14px">Rules that apply</h2><div class="rule-cards">${f.rules.map(rid => {
+    const r = DATA.rules[rid];
+    return `<a class="rule-card" href="#rule-${rid}"><div class="meta">${regulatorPill(r.regulator)}</div><h3>${esc(r.title)}</h3><p>${esc(r.tldr)}</p>
+      <span class="foot">${r.requirements.length} requirements · ${plural(new Set(allCites(r).map(c => c.source)).size, 'source')}</span></a>`;
+  }).join('')}</div>`;
+  if (h2s[1]) root.insertBefore(cards, h2s[1]); else root.appendChild(cards);
+
+  // Interactive checklist (in memory only).
+  const boxes = $$('input[type=checkbox]', root);
+  boxes.forEach((b, i) => {
+    b.disabled = false; b.removeAttribute('disabled'); b.id = `chk-${i}`;
+    // Wrap the item text in one span so bold words don't become separate flex items.
+    const li = b.closest('li'); const label = document.createElement('label'); const text = document.createElement('span');
+    b.remove();
+    while (li.firstChild) text.appendChild(li.firstChild);
+    label.append(b, text); li.appendChild(label);
+  });
+  const ck = h2s.find(h => /pre-build checklist/i.test(h.textContent));
+  if (ck) {
+    const tools = document.createElement('div'); tools.className = 'check-tools';
+    tools.innerHTML = `<span id="ck-count"></span><button type="button" class="btn" id="copy-ck">Copy checklist for PRD</button>`;
+    ck.after(tools);
+    const upd = () => $('#ck-count').textContent = `${boxes.filter(b => b.checked).length} of ${boxes.length} done · not saved, clears when you leave`;
+    boxes.forEach(b => b.addEventListener('change', upd)); upd();
+    $('#copy-ck').onclick = () => copy(`${f.title}: pre-build checklist\n\n${checklistMd}\n\nSource: Fintech Rulebook, last verified ${fmtDate(f.last_verified)}. Not legal advice.`, 'Checklist copied');
+  }
+  $('#report').onclick = () => copy(issueText('feature guide', f.title), 'Issue template copied. Paste it into an email to the content team.');
+}
+
+function renderSearch() {
+  $('#bar-search').hidden = false;
+  $('#q-bar').value = lastQuery;
+  const hits = lastQuery.trim() ? searchDocs(lastQuery.trim()) : [];
+  const regs = [...new Set(hits.filter(h => h.type === 'rule').map(h => h.regulator))];
+  const shown = regFilter ? hits.filter(h => h.type !== 'rule' || h.regulator === regFilter) : hits;
+  app.innerHTML = `
+    <div class="read">
+      <nav class="crumbs" aria-label="Breadcrumb"><a href="#home">Home</a><span>/</span><span>Search</span></nav>
+      <h1 style="font-size:30px;margin:14px 0 6px">${hits.length ? `${hits.length} result${hits.length > 1 ? 's' : ''} for “${esc(lastQuery)}”` : `No rules match “${esc(lastQuery)}” yet`}</h1>
+      ${regs.length > 1 ? `<div class="chips" style="margin:14px 0 4px"><button type="button" class="chip" data-reg="" aria-pressed="${!regFilter}">All regulators</button>${regs.map(r => `<button type="button" class="chip" data-reg="${esc(r)}" aria-pressed="${regFilter === r}">${esc(r)}</button>`).join('')}</div>` : ''}
+      <div>${shown.map(h => h.type === 'rule'
+        ? `<a class="result" href="#rule-${h.id}"><div class="meta">${regulatorPill(h.regulator)}<span>Rule</span><span>Last verified ${h.verified}</span></div><h3>${esc(h.title)}</h3><p>${esc(h.tldr)}</p></a>`
+        : `<a class="result" href="#feature-${h.id}"><div class="meta"><span class="pill">Feature guide</span></div><h3>${esc(h.title)}</h3><p>${esc(h.tldr)}</p></a>`).join('')}</div>
+      ${!hits.length ? `<p style="color:var(--muted)">We may not have written this rule yet, or it might use different words. Try one of these, or start from a feature.</p>
+        <div class="chips">${EXAMPLES.map(x => `<button type="button" class="chip" data-q="${esc(x)}">${esc(x)}</button>`).join('')}<a class="chip" href="#home">Browse features</a></div>` : ''}
+    </div>`;
+  $$('[data-reg]').forEach(b => b.onclick = () => { regFilter = b.dataset.reg || null; renderSearch(); });
+  $$('.chip[data-q]').forEach(b => b.onclick = () => { lastQuery = b.dataset.q; regFilter = null; renderSearch(); });
+}
+
+function renderMissing() { app.innerHTML = `<div class="read"><h1 style="font-size:28px">We couldn't find that page</h1><p><a href="#home">Back to home</a></p></div>`; }
+
+/* ---------- Search index + suggestions ---------- */
+function flatText(o, out = []) {
+  if (typeof o === 'string') out.push(o);
+  else if (Array.isArray(o)) o.forEach(x => flatText(x, out));
+  else if (o && typeof o === 'object' && !(o instanceof Date)) Object.entries(o).forEach(([k, v]) => { if (k !== 'cite') flatText(v, out); });
+  return out;
+}
+function buildIndex() {
+  const docs = [
+    ...Object.entries(DATA.rules).map(([id, r]) => ({
+      type: 'rule', id, title: r.title, tldr: r.tldr, regulator: r.regulator, synonyms: r.synonyms || [],
+      lawName: DATA.sources[r.law]?.title || '', verified: fmtDate(r.last_verified), all: flatText(r).join(' '),
+    })),
+    ...Object.entries(DATA.features).map(([id, f]) => ({
+      type: 'feature', id, title: f.title, tldr: f.summary, synonyms: [id.replace(/-/g, ' ')], all: f.body,
+    })),
+  ];
+  fuse = new Fuse(docs, {
+    keys: [{ name: 'title', weight: 3 }, { name: 'synonyms', weight: 2 }, { name: 'regulator', weight: 2 }, { name: 'lawName', weight: 1.5 }, { name: 'tldr', weight: 1 }, { name: 'all', weight: .6 }],
+    threshold: 0.36, ignoreLocation: true, includeScore: true,
+  });
+}
+// Fuzzy matches against long text score close to 1; drop those so "FINTRAC" doesn't surface CASL rules.
+const searchDocs = q => fuse.search(q).filter(h => h.score < 0.95).map(h => h.item);
+
+function attachSearch(input, wrapEl) {
+  let drop = null, active = -1;
+  const close = () => { drop?.remove(); drop = null; active = -1; };
+  const links = () => drop ? $$('a', drop) : [];
+  const setActive = i => { const ls = links(); if (!ls.length) return; active = (i + ls.length) % ls.length; ls.forEach((l, j) => l.classList.toggle('active', j === active)); ls[active].scrollIntoView({ block: 'nearest' }); };
+  const submit = () => { lastQuery = input.value; regFilter = null; close(); location.hash === '#search' ? renderSearch() : go('search'); };
+  input.addEventListener('input', () => {
+    const q = input.value.trim(); close(); if (!q) return;
+    const hits = searchDocs(q);
+    const rules = hits.filter(h => h.type === 'rule').slice(0, 5), feats = hits.filter(h => h.type === 'feature').slice(0, 3);
+    drop = document.createElement('div'); drop.className = 'drop'; drop.setAttribute('role', 'listbox');
+    drop.innerHTML = (feats.length ? `<h4>Feature guides</h4>${feats.map(h => `<a href="#feature-${h.id}" role="option">${esc(h.title)}<span>${esc(h.tldr)}</span></a>`).join('')}` : '')
+      + (rules.length ? `<h4>Rules</h4>${rules.map(h => `<a href="#rule-${h.id}" role="option">${esc(h.title)}<span>${esc(h.regulator)} · ${esc(h.tldr.slice(0, 90))}…</span></a>`).join('')}` : '')
+      + `<a href="#search" class="all" role="option">${hits.length ? 'See all results for' : 'No quick matches. Search for'} “${esc(q)}” →</a>`;
+    $('.all', drop).onclick = e => { e.preventDefault(); submit(); };
+    $$('a:not(.all)', drop).forEach(a => a.addEventListener('click', close));
+    wrapEl.appendChild(drop);
+  });
+  input.addEventListener('keydown', e => {
+    if (e.key === 'ArrowDown') { e.preventDefault(); setActive(active + 1); }
+    else if (e.key === 'ArrowUp') { e.preventDefault(); setActive(active - 1); }
+    else if (e.key === 'Enter') { e.preventDefault(); const l = links()[active]; if (l && !l.classList.contains('all')) { close(); location.hash = l.getAttribute('href'); } else if (input.value.trim()) submit(); }
+    else if (e.key === 'Escape') { close(); input.blur(); }
+  });
+  input.addEventListener('blur', () => setTimeout(close, 150));
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closePop();
+  const typing = /INPUT|TEXTAREA/.test(document.activeElement?.tagName);
+  if ((e.key === 'k' && (e.metaKey || e.ctrlKey)) || (e.key === '/' && !typing)) {
+    e.preventDefault(); const i = $('#q-home') || $('#q-bar'); i.focus(); i.select();
+  }
+});
+
+/* ---------- Routing ---------- */
+function go(h) { if (location.hash === '#' + h) route(); else location.hash = h; }
+function route() {
+  closePop(); CTX = null;
+  const h = location.hash.slice(1);
+  if (h.startsWith('rule-')) { $('#bar-search').hidden = false; renderRule(h.slice(5)); }
+  else if (h.startsWith('feature-')) { $('#bar-search').hidden = false; renderFeature(h.slice(8)); }
+  else if (h === 'search') renderSearch();
+  else renderHome();
+  window.scrollTo(0, 0);
+}
+window.addEventListener('hashchange', route);
+
+load().then(() => {
+  buildIndex();
+  attachSearch($('#q-bar'), $('#bar-search'));
+  route();
+}).catch(err => {
+  app.innerHTML = `<div class="read"><h1 style="font-size:26px">The rules didn't load</h1><p>${esc(err.message)}. The prototype reads its content files from the server, so it needs to be opened from its published link rather than as a local file.</p></div>`;
+});
+</script>

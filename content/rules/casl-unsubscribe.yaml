@@ -1,0 +1,68 @@
+id: casl-unsubscribe
+title: "CASL: Sender ID & unsubscribe mechanism"
+regulator: CRTC
+law: casl
+features: [marketing-messages, notifications, referrals]
+products: [all]
+synonyms: [opt out, unsubscribe, stop, reply stop, sender identification, footer, anti-spam]
+
+tldr: >
+  Every commercial message must say who sent it, give a way to contact you,
+  and include a free, easy unsubscribe. Honour unsubscribes within 10
+  business days.
+
+applies:
+  always: "Every commercial email, SMS or DM — including ones exempt from consent under s.6(6)."
+  not_covered: "Messages exempted from s.6 entirely by regulation (e.g. secure in-app inbox, replies to customer inquiries)."
+  unclear:
+    text: >
+      Push notifications: whether a device push token is an "electronic
+      address" hasn't been clearly settled. We recommend treating promotional
+      push as covered.
+    cite: [{source: casl, pinpoint: "s.1(1) 'electronic address'", section: "1"}, {source: our-guidance}]
+
+requirements:
+  - text: "Identify the sender and, if different, who the message is sent on behalf of."
+    cite:
+      - {source: casl, pinpoint: "s.6(2)(a)", section: "6"}
+      - {source: ecpr-crtc, pinpoint: "s.2(1)(a)–(c)", section: "2"}
+  - text: "Include a mailing address plus one of: phone number (agent or voicemail), email address, or web address."
+    cite: [{source: ecpr-crtc, pinpoint: "s.2(1)(d)", section: "2"}]
+  - text: "Include an unsubscribe mechanism that costs nothing and uses the same channel (or another practicable electronic means), with an email address or web link to send the request to."
+    cite: [{source: casl, pinpoint: "s.6(2)(c), s.11(1)", section: "11"}]
+  - text: "Keep the unsubscribe address or link working for at least 60 days after sending."
+    cite: [{source: casl, pinpoint: "s.11(2)", section: "11"}]
+  - text: "Process the unsubscribe without delay, and no later than 10 business days, without asking the person to do anything more."
+    cite: [{source: casl, pinpoint: "s.11(3)", section: "11"}]
+  - text: "Sender info and unsubscribe must be clear and prominent; the unsubscribe must be easy to use ('readily performed')."
+    cite: [{source: ecpr-crtc, pinpoint: "s.3", section: "3"}]
+  - text: "If it's impractical to fit this in the message (e.g. SMS), you can link clearly and prominently to a free web page with the info."
+    cite: [{source: ecpr-crtc, pinpoint: "s.2(2)", section: "2"}]
+
+design_implications:
+  do:
+    - text: "Visible 'Unsubscribe' link in every promotional email footer, next to company name and address."
+      cite: [{source: ecpr-crtc, pinpoint: "s.3", section: "3"}]
+    - text: "'Reply STOP to opt out' in promotional SMS, or a short link to a preferences page."
+      cite: [{source: casl, pinpoint: "s.11(1)", section: "11"}]
+    - text: "Separate marketing vs account/security notification toggles in app settings."
+      cite: [{source: our-guidance}]
+    - text: "Offer a preference centre, but always keep a one-click 'unsubscribe from all marketing' option."
+      cite: [{source: our-guidance}]
+  dont:
+    - text: "Require login, a password, or extra personal info to unsubscribe."
+      cite: [{source: casl, pinpoint: "s.11(3) 'without further action'", section: "11"}]
+    - text: "Send a 'Are you sure? Here's 20% off to stay' promo after someone unsubscribes."
+      cite: [{source: casl, pinpoint: "s.6(1)", section: "6"}]
+
+example: >
+  A user taps unsubscribe on Monday. Marketing emails already queued for
+  the next two weeks must be stopped — the request must take effect within
+  10 business days.
+
+penalties:
+  text: "Up to $10M per violation for businesses, $1M for individuals."
+  cite: [{source: casl, pinpoint: "s.20(4)", section: "20"}]
+
+related: [casl-consent, casl-referral-messages]
+last_verified: 2026-10-12

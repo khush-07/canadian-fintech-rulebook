@@ -1,0 +1,51 @@
+id: competition-misleading-messages
+title: "Competition Act: Misleading marketing messages & drip pricing"
+regulator: "Competition Bureau"
+law: competition-act
+features: [marketing-messages, fees-pricing, landing-pages]
+products: [all]
+synonyms: [misleading advertising, subject line, clickbait, drip pricing, hidden fees, "no fees", "free", false claims]
+
+tldr: >
+  Sender names, subject lines, message content and links can't be false or
+  misleading, and an advertised price must include all mandatory fees.
+
+applies:
+  always: "Any promotional email, SMS, push, ad, landing page or in-app message."
+
+requirements:
+  - text: "Sender information and subject lines must not be false or misleading."
+    cite:
+      - {source: competition-act, pinpoint: "s.74.011(1)", section: "74.011"}
+      - {source: competition-act, pinpoint: "s.52.01(1) (criminal, if knowing or reckless)", section: "52.01"}
+  - text: "Message content must not contain a materially false or misleading representation."
+    cite: [{source: competition-act, pinpoint: "s.74.011(2)", section: "74.011"}]
+  - text: "URLs and links ('locators') must not be misleading."
+    cite: [{source: competition-act, pinpoint: "s.74.011(3)", section: "74.011"}]
+  - text: "An advertised price must be attainable — mandatory fees can't be added later (drip pricing). Only government-imposed charges may be excluded."
+    cite: [{source: competition-act, pinpoint: "s.74.01(1.1)", section: "74.01"}]
+
+design_implications:
+  do:
+    - text: "Subject line matches the content ('New: 3.5% savings rate for 6 months')."
+      cite: [{source: competition-act, pinpoint: "s.74.011(1)", section: "74.011"}]
+    - text: "Show the conditions of the headline claim right next to it (promo period, minimum balance)."
+      cite: [{source: competition-act, pinpoint: "s.74.01(1)(a)", section: "74.01"}]
+    - text: "Account pricing shows the full monthly fee, including mandatory add-ons."
+      cite: [{source: competition-act, pinpoint: "s.74.01(1.1)", section: "74.01"}]
+  dont:
+    - text: "Subject lines like 'Urgent: account issue' for a promo, or fake 'RE:' threads."
+      cite: [{source: competition-act, pinpoint: "s.74.011(1)", section: "74.011"}]
+    - text: "'No fees' when there's a mandatory card-replacement or inactivity fee."
+      cite: [{source: competition-act, pinpoint: "s.74.01(1)(a)", section: "74.01"}]
+
+penalties:
+  text: >
+    For businesses: up to the greater of $10M ($15M for repeat orders) and 3x
+    the benefit — or 3% of annual worldwide gross revenues if the benefit
+    can't be determined.
+  cite: [{source: competition-act, pinpoint: "s.74.1", section: "74.1"}]
+  needs_review: true   # confirmed via secondary summary of 2024 amendments; re-read official section
+
+related: [casl-consent]
+last_verified: 2026-10-12
