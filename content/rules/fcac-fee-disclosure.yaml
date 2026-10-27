@@ -1,0 +1,58 @@
+id: fcac-fee-disclosure
+title: "Bank Act: Fee disclosure and 30-day notice of fee changes"
+regulator: FCAC
+law: bank-act
+features: [fees-pricing, accounts-deposits]
+products: [deposits]
+synonyms: [fees, fee schedule, service charges, price change, fee increase, new fee, 30 days notice, monthly fee, hold period, cheque hold, pricing page, advertising]
+
+tldr: >
+  Publish a full schedule of deposit account fees, give account holders at
+  least 30 days' notice of any new or increased fee, and keep ads accurate,
+  clear and not misleading.
+
+applies:
+  always: "Banks, authorized foreign banks and federal credit unions offering deposit accounts in Canada."
+  not_covered:
+    text: "Non-bank fintechs aren't covered by these Bank Act rules. Drip pricing and misleading price claims are still caught by the Competition Act."
+    cite: [{source: competition-act, pinpoint: "s.74.01(1.1)", section: "74.01"}]
+
+requirements:
+  - text: "Disclose a complete schedule of charges for personal deposit accounts, and the maximum hold periods for deposited cheques."
+    cite: [{source: bank-act, pinpoint: "s.627.68", section: "627.68"}]
+  - text: "Charges to disclose include statements, withdrawals, debit purchases, transfers, bill payments, overdrafts, stop payments and account closing."
+    cite: [{source: fcpf-regs, pinpoint: "ss.20–21", section: "21"}]
+  - text: "Disclose any new or increased charge at least 30 days before it takes effect, to each person who receives a statement for the account."
+    cite: [{source: bank-act, pinpoint: "s.627.72(1)", section: "627.72"}]
+  - text: "If there's no statement, publicize the change for at least 60 days before it takes effect, including at your ATMs for personal accounts. Always say where to get more information."
+    cite: [{source: bank-act, pinpoint: "s.627.72(2)–(3)", section: "627.72"}]
+  - text: "Disclose prescribed information before prescribed changes to an agreement's terms take effect."
+    cite: [{source: bank-act, pinpoint: "s.627.62", section: "627.62"}]
+  - text: "Advertisements must be accurate, clear and not misleading, and required information in an ad must be shown prominently."
+    cite:
+      - {source: bank-act, pinpoint: "s.627.14", section: "627.14"}
+      - {source: bank-act, pinpoint: "s.627.63", section: "627.63"}
+  - text: "Mailed notices count as delivered on the fifth business day after the postmark. Plan notice dates around that."
+    cite: [{source: fcpf-regs, pinpoint: "s.18", section: "18"}]
+
+design_implications:
+  do:
+    - text: "Keep one public fee page listing every account fee, linked from sign-up and account settings."
+      cite: [{source: bank-act, pinpoint: "s.627.68(a)", section: "627.68"}]
+    - text: "Build fee changes as scheduled releases with a notice date at least 30 days before the effective date (more if notices are mailed)."
+      cite: [{source: bank-act, pinpoint: "s.627.72(1)", section: "627.72"}, {source: fcpf-regs, pinpoint: "s.18", section: "18"}]
+    - text: "Show the full monthly cost, including mandatory fees, wherever you advertise the price."
+      cite: [{source: bank-act, pinpoint: "s.627.14", section: "627.14"}, {source: competition-act, pinpoint: "s.74.01(1.1)", section: "74.01"}]
+  dont:
+    - text: "Ship a fee increase in a release that goes live immediately."
+      cite: [{source: bank-act, pinpoint: "s.627.72(1)", section: "627.72"}]
+    - text: "Advertise 'No monthly fee' with the minimum-balance condition only in the fine print."
+      cite: [{source: bank-act, pinpoint: "s.627.14, s.627.63", section: "627.14"}]
+
+example: >
+  Product wants to raise the e-Transfer fee from $1 to $1.50 on March 1.
+  Statements and in-app notices must reach customers by January 30 at the
+  latest. Mailed notices need to go out about a week earlier.
+
+related: [fcac-express-consent-products, competition-misleading-messages]
+last_verified: 2026-10-27

@@ -1,0 +1,53 @@
+id: fcac-express-consent-products
+title: "Bank Act: Express consent before adding a product or fee"
+regulator: FCAC
+law: bank-act
+features: [fees-pricing, accounts-deposits, lending-bnpl]
+products: [deposits, cards, lending]
+synonyms: [express consent, negative option, opt in, add-on, upsell, overdraft protection, upgrade, account upgrade, consent to product, auto enrol]
+
+tldr: >
+  A bank can't give a customer a product or service (including paid add-ons
+  and upgrades) until the customer explicitly agrees, signs an agreement,
+  and gets a copy. Using the product doesn't count as consent.
+
+applies:
+  always: "Banks, authorized foreign banks and federal credit unions dealing with people in Canada."
+  not_covered:
+    text: >
+      Non-bank fintechs aren't covered by the Bank Act, but provincial
+      consumer protection laws and the Competition Act still restrict
+      charging people for things they didn't agree to.
+    cite: [{source: our-guidance}]
+
+requirements:
+  - text: "Before providing a product or service, obtain the person's express consent, enter into an agreement, and give them a copy of the agreement if the service is ongoing."
+    cite: [{source: bank-act, pinpoint: "s.627.08(1)", section: "627.08"}]
+  - text: "If consent is given verbally (e.g. on a call), confirm it in writing promptly."
+    cite: [{source: bank-act, pinpoint: "s.627.08(2)", section: "627.08"}]
+  - text: "The customer using the product doesn't count as express consent."
+    cite: [{source: bank-act, pinpoint: "s.627.08(3)", section: "627.08"}]
+  - text: "Consent requests must be clear, simple and not misleading, and must make clear it's a financial product, not a promotion or reward."
+    cite: [{source: fcac-b5}]
+
+design_implications:
+  do:
+    - text: "Use an explicit 'Yes, add overdraft protection for $5/month' action, with the price and key terms on the same screen."
+      cite: [{source: bank-act, pinpoint: "s.627.08(1)", section: "627.08"}, {source: fcac-b5}]
+    - text: "Send the agreement or confirmation by email or in-app right after the customer agrees."
+      cite: [{source: bank-act, pinpoint: "s.627.08(1)(c), (2)", section: "627.08"}]
+    - text: "Label offers as financial products even when bundled with points or cashback ('Apply for the Travel Card: earn 2x points')."
+      cite: [{source: fcac-b5}]
+  dont:
+    - text: "Auto-enrol customers in a paid feature with an opt-out ('We've upgraded you! Cancel anytime')."
+      cite: [{source: bank-act, pinpoint: "s.627.08(3)", section: "627.08"}]
+    - text: "Use 'Claim your reward' as the button that actually opens a credit product."
+      cite: [{source: fcac-b5}]
+
+example: >
+  A bank turns on paid overdraft protection for everyone and notes "fees
+  apply if used". Customers who never agreed haven't given express consent,
+  even if they later go into overdraft.
+
+related: [fcac-fee-disclosure, fcac-undue-pressure, competition-misleading-messages]
+last_verified: 2026-10-27

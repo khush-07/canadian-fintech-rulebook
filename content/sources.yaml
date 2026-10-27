@@ -189,8 +189,25 @@ fintrac-24hour-guidance:
   url: "https://fintrac-canafe.canada.ca/guidance-directives/transaction-operation/24hour/1-eng"
   last_checked: 2026-10-27
 
+fcpf-regs:
+  title: "Financial Consumer Protection Framework Regulations, SOR/2021-181"
+  short: "FCPF Regulations"
+  regulator: FCAC
+  authority: binding
+  url: "https://laws-lois.justice.gc.ca/eng/regulations/SOR-2021-181/"
+  pinpoint_url_pattern: "https://laws-lois.justice.gc.ca/eng/regulations/SOR-2021-181/section-{section}.html"
+  last_checked: 2026-10-27
+
+fcac-b5:
+  title: "FCAC Bulletin B-5: Consent for new products or services"
+  short: "FCAC Bulletin B-5"
+  regulator: FCAC
+  authority: interpretive
+  url: "https://www.canada.ca/en/financial-consumer-agency/services/industry/bulletins/consent-new-products-services.html"
+  last_checked: 2026-10-27
+
 our-guidance:
-  title: "Fintech Rules editorial team recommendation"
+  title: "Fintech Rulebook editorial team recommendation"
   short: "Best practice"
   authority: best_practice
   url: null

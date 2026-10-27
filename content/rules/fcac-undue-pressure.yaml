@@ -1,0 +1,46 @@
+id: fcac-undue-pressure
+title: "Bank Act: No undue pressure, tied selling, or unsuitable products"
+regulator: FCAC
+law: bank-act
+features: [fees-pricing, lending-bnpl, accounts-deposits]
+products: [deposits, cards, lending]
+synonyms: [undue pressure, coercive tied selling, tied selling, bundling, dark patterns, upsell, appropriateness, suitability, sales practices, countdown timer]
+
+tldr: >
+  Banks can't pressure or coerce customers, or take advantage of them. They
+  can't force customers to buy one product to get another, though they can
+  offer better terms for bundles. They must have processes to offer
+  products that suit each person.
+
+applies:
+  always: "Banks, authorized foreign banks and federal credit unions dealing with customers and the public in Canada."
+
+requirements:
+  - text: "Don't impose undue pressure on or coerce anyone, including making a product a condition of getting another one."
+    cite: [{source: bank-act, pinpoint: "s.627.04(a)", section: "627.04"}]
+  - text: "Don't take advantage of a person."
+    cite: [{source: bank-act, pinpoint: "s.627.04(b)", section: "627.04"}]
+  - text: "Offering better terms (e.g. a lower rate) to customers who also take another product is allowed."
+    cite: [{source: bank-act, pinpoint: "s.627.05(1)–(2)", section: "627.05"}]
+  - text: "Have policies and procedures so products and services offered to individuals are appropriate for their circumstances and financial needs."
+    cite: [{source: bank-act, pinpoint: "s.627.06", section: "627.06"}]
+
+design_implications:
+  do:
+    - text: "Present a bundle discount as an optional choice next to the stand-alone price."
+      cite: [{source: bank-act, pinpoint: "s.627.05(1)", section: "627.05"}]
+    - text: "Ask a few needs questions before recommending a product tier, and show why it was recommended."
+      cite: [{source: bank-act, pinpoint: "s.627.06", section: "627.06"}, {source: our-guidance}]
+  dont:
+    - text: "Use fake countdown timers, 'only 2 spots left', or confirm-shaming ('No, I don't want to save money') on product offers."
+      cite: [{source: bank-act, pinpoint: "s.627.04(a)", section: "627.04"}, {source: our-guidance}]
+    - text: "Require a credit card or insurance to get a mortgage or loan approved."
+      cite: [{source: bank-act, pinpoint: "s.627.04(a)", section: "627.04"}]
+
+example: >
+  "Get 0.25% off your mortgage rate when you also open a chequing account"
+  is fine. "You'll need to open a chequing account for your mortgage to be
+  approved" is coercive tied selling.
+
+related: [fcac-express-consent-products, fcac-fee-disclosure]
+last_verified: 2026-10-27

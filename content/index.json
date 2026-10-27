@@ -1,9 +1,10 @@
 {
-  "features": ["marketing-messages", "onboarding-kyc", "payments-transfers"],
+  "features": ["marketing-messages", "onboarding-kyc", "payments-transfers", "fees-pricing"],
   "rules": [
     "casl-consent", "casl-unsubscribe", "casl-referral-messages", "competition-misleading-messages",
     "fintrac-identity-verification", "fintrac-pep-hio", "fintrac-third-party-determination", "fintrac-business-relationship",
     "sanctions-screening", "crs-tax-self-certification", "biometric-id-privacy", "bank-basic-banking-access",
-    "rpaa-registration", "rpaa-safeguarding-funds", "rpaa-operational-risk-incidents", "fintrac-eft-reporting"
+    "rpaa-registration", "rpaa-safeguarding-funds", "rpaa-operational-risk-incidents", "fintrac-eft-reporting",
+    "fcac-fee-disclosure", "fcac-express-consent-products", "fcac-undue-pressure"
   ]
 }
