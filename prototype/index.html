@@ -282,7 +282,8 @@ const app = $('#app');
 async function load() {
   // Locally the page lives in /prototype/ next to /content/; when published they sit side by side.
   const base = location.pathname.includes('/prototype/') ? '../' : '';
-  const get = async p => { const r = await fetch(base + p); if (!r.ok) throw new Error(`Couldn't load ${p}`); return r.text(); };
+  // no-cache: always ask the server whether content changed, so new guides show up right after a deploy.
+  const get = async p => { const r = await fetch(base + p, { cache: 'no-cache' }); if (!r.ok) throw new Error(`Couldn't load ${p}`); return r.text(); };
   ({ rules: RULE_IDS, features: FEATURE_IDS } = JSON.parse(await get('content/index.json')));
   DATA.sources = jsyaml.load(await get('content/sources.yaml'));
   await Promise.all(RULE_IDS.map(async id => { DATA.rules[id] = jsyaml.load(await get(`content/rules/${id}.yaml`)); }));
