@@ -1,0 +1,52 @@
+id: fintrac-eft-reporting
+title: "FINTRAC: International transfer reports and the travel rule"
+regulator: FINTRAC
+law: pcmltfa
+features: [payments-transfers]
+products: [payments, remittance, crypto]
+synonyms: [eft, eftr, international transfer, wire, remittance, swift, travel rule, $10,000, 24-hour rule, cross-border payment]
+
+tldr: >
+  Report international transfers of $10,000 or more (single or combined
+  within 24 hours) to FINTRAC within 5 business days. Transfers must carry
+  the beneficiary's details, with a policy for incoming transfers missing
+  information.
+
+applies:
+  always: "Financial entities, MSBs (incl. foreign MSBs) and casinos sending or receiving international EFTs."
+  also_if:
+    - condition: "Virtual currency transfers"
+      note: "Similar large-transfer reporting and travel rule obligations apply to virtual currency (rule coming soon)."
+      cite: [{source: pcmltfr, pinpoint: "s.124.1", section: "124.1"}]
+
+requirements:
+  - text: "Report each international EFT of $10,000 or more that you initiate or finally receive."
+    cite: [{source: fintrac-eft-guidance}]
+  - text: "Smaller transfers totalling $10,000 or more within 24 hours, for the same requester, third party or beneficiary, must be reported together (the 24-hour rule)."
+    cite: [{source: fintrac-24hour-guidance}]
+  - text: "Submit the report within 5 business days of the transfer."
+    cite: [{source: fintrac-eft-guidance}]
+  - text: "Include the beneficiary's name and address, and their account or reference number where there is one, with the transfer."
+    cite: [{source: pcmltfr, pinpoint: "s.124(3)", section: "124"}]
+  - text: "Have written risk-based policies for incoming transfers missing required information: when to suspend or reject, and what follow-up to do."
+    cite: [{source: pcmltfr, pinpoint: "s.124(4)", section: "124"}]
+
+design_implications:
+  do:
+    - text: "Make beneficiary name and address required fields for international transfers."
+      cite: [{source: pcmltfr, pinpoint: "s.124(3)", section: "124"}]
+    - text: "Build aggregation logic that groups a customer's international transfers within each 24-hour window for reporting."
+      cite: [{source: fintrac-24hour-guidance}]
+    - text: "Add a 'held for review' status for incoming transfers with missing info, and tell the customer what's needed."
+      cite: [{source: pcmltfr, pinpoint: "s.124(4)", section: "124"}]
+  dont:
+    - text: "Let users split transfers to stay under $10,000. Aggregation catches it, and deliberate splitting may itself be suspicious."
+      cite: [{source: fintrac-24hour-guidance}]
+
+example: >
+  A user sends $6,000 to their sister in India at 9 a.m. and $5,000 at
+  4 p.m. Together they're $11,000 within 24 hours, so you file one EFT
+  report within 5 business days.
+
+related: [rpaa-registration, sanctions-screening, fintrac-business-relationship]
+last_verified: 2026-10-27

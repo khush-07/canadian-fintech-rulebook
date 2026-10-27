@@ -1,0 +1,47 @@
+id: rpaa-operational-risk-incidents
+title: "RPAA: Operational risk and incident notices"
+regulator: "Bank of Canada"
+law: rpaa
+features: [payments-transfers, vendors-cloud]
+products: [payments, prepaid, wallets]
+synonyms: [operational risk, incident, outage, downtime, cyber incident, status page, incident notification, business continuity, third party risk]
+
+tldr: >
+  Keep a written risk and incident-response framework covering cyber, fraud
+  and vendors. When an incident materially affects users, notify them and
+  the Bank of Canada without delay.
+
+applies:
+  always: "Every registered payment service provider."
+
+requirements:
+  - text: "Establish and maintain a risk management and incident response framework that meets the Regulations."
+    cite: [{source: rpaa, pinpoint: "s.17", section: "17"}]
+  - text: "The framework must be written, set reliability targets, assign a senior officer, and cover cyber, fraud and third-party risks, plus incident response plans."
+    cite: [{source: rpaa-regs, pinpoint: "s.5(1)", section: "5"}]
+  - text: "Assess third-party service providers at least annually and before material contract changes."
+    cite: [{source: rpaa-regs, pinpoint: "s.5(3)–(5)", section: "5"}]
+  - text: "Review the framework at least annually, test it, and get an independent review every 3 years."
+    cite: [{source: rpaa-regs, pinpoint: "ss.8–10", section: "8"}]
+  - text: "If an incident materially affects end users or other PSPs, notify them and the Bank of Canada without delay."
+    cite: [{source: rpaa, pinpoint: "s.18", section: "18"}]
+  - text: "User notices must include your name, when the incident started, its impact, and corrective steps. If you can't reach someone, post the notice on your website."
+    cite: [{source: rpaa-regs, pinpoint: "s.12", section: "12"}]
+
+design_implications:
+  do:
+    - text: "Prepare in-app banner, email and status-page templates for incidents in advance, with the required fields."
+      cite: [{source: rpaa-regs, pinpoint: "s.12", section: "12"}]
+    - text: "Keep users' contact details current. Notices must go to their latest contact information."
+      cite: [{source: rpaa-regs, pinpoint: "s.12", section: "12"}]
+  dont:
+    - text: "Wait for a full root-cause analysis before notifying. The duty is 'without delay'."
+      cite: [{source: rpaa, pinpoint: "s.18", section: "18"}]
+
+example: >
+  Your card processor goes down for 3 hours and payments fail. Post an
+  in-app banner and status update with the start time and impact, notify the
+  Bank of Canada through its system, and follow up when it's fixed.
+
+related: [rpaa-registration, rpaa-safeguarding-funds]
+last_verified: 2026-10-27

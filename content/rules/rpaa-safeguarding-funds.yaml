@@ -1,0 +1,46 @@
+id: rpaa-safeguarding-funds
+title: "RPAA: Safeguarding customer funds"
+regulator: "Bank of Canada"
+law: rpaa
+features: [payments-transfers, accounts]
+products: [payments, prepaid, wallets]
+synonyms: [safeguarding, trust account, segregation, customer funds, wallet balance, insolvency, float, stored value]
+
+tldr: >
+  If you hold customer money, keep it in a trust account or a dedicated
+  account backed by insurance or a guarantee, so customers get it back
+  quickly if you fail. You also need a written safeguarding framework.
+
+applies:
+  always: "Registered PSPs that hold end-user funds (e.g. wallet balances, funds in transit)."
+
+requirements:
+  - text: "Hold end-user funds in trust in a dedicated account, or in a dedicated account covered by insurance or a guarantee at least equal to the funds (or another prescribed way)."
+    cite: [{source: rpaa, pinpoint: "s.20(1)", section: "20"}]
+  - text: "No one may set off amounts against those funds."
+    cite: [{source: rpaa, pinpoint: "s.20(3)", section: "20"}]
+  - text: "The account must be at an eligible financial institution. Insurers or guarantors must not be affiliated with you, and the proceeds must be payable to end users soon after insolvency."
+    cite: [{source: rpaa-regs, pinpoint: "ss.13–14", section: "13"}]
+  - text: "Keep a written safeguarding framework: liquidity arrangements, a daily ledger of each end user's funds, access for administrators in insolvency, and a named senior officer. Approve and review it at least annually."
+    cite: [{source: rpaa-regs, pinpoint: "s.15", section: "15"}]
+  - text: "Find and fix any shortfall where funds wouldn't be fully payable in an insolvency."
+    cite: [{source: rpaa-regs, pinpoint: "s.16", section: "16"}]
+  - text: "Get an independent review at least once every 3 years."
+    cite: [{source: rpaa-regs, pinpoint: "s.17", section: "17"}]
+
+design_implications:
+  do:
+    - text: "Reconcile each user's balance daily against the safeguarding account. The ledger is a legal requirement, not a nice-to-have."
+      cite: [{source: rpaa-regs, pinpoint: "s.15", section: "15"}]
+    - text: "Explain in plain language where customers' money is held and what happens if your company fails, without implying CDIC deposit insurance unless it actually applies."
+      cite: [{source: our-guidance}]
+  dont:
+    - text: "Use customer balances for operating expenses or marketing rewards."
+      cite: [{source: rpaa, pinpoint: "s.20", section: "20"}]
+
+example: >
+  Customer wallet balances total $4.2M. All of it must sit in a dedicated
+  trust account, and tonight's ledger must show who owns each dollar.
+
+related: [rpaa-registration, rpaa-operational-risk-incidents]
+last_verified: 2026-10-27

@@ -11,7 +11,9 @@ Early prototype. Feature guides written so far:
 - **Marketing messages** (CASL consent, unsubscribe, referral messages; Competition Act misleading messages and drip pricing)
 - **Onboarding & KYC** (FINTRAC identity verification, PEP/HIO, third-party determination, account purpose and monitoring; sanctions screening; CRS/FATCA self-certification and SIN; biometric privacy; Bank Act basic banking access)
 
-Planned guides: Payments & transfers, Fees & pricing, Lending & BNPL, Complaints & support, AI & automated decisions, Vendors & cloud, Accounts & deposits, Data & privacy.
+- **Payments & transfers** (RPAA registration, safeguarding funds, operational risk and incidents; FINTRAC EFT reporting and travel rule)
+
+Planned guides: Fees & pricing, Lending & BNPL, Complaints & support, AI & automated decisions, Vendors & cloud, Accounts & deposits, Data & privacy.
 
 ## How it works
 

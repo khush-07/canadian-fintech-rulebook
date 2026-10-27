@@ -1,0 +1,66 @@
+id: rpaa-registration
+title: "RPAA: Do you need to register as a payment service provider?"
+regulator: "Bank of Canada"
+law: rpaa
+features: [payments-transfers, accounts]
+products: [payments, prepaid, wallets]
+synonyms: [rpaa, psp, payment service provider, retail payment activities, bank of canada registration, wallet, payment app, stored value, remittance, payment facilitator]
+
+tldr: >
+  If you hold customer funds, maintain payment accounts, initiate, authorize
+  or relay transfers, or clear and settle payments as a business, you must be
+  registered with the Bank of Canada before you do it. Banks and some other
+  financial institutions are excluded.
+
+applies:
+  always: >
+    Businesses performing a payment function for end users as a business
+    activity that isn't incidental to another service, with a place of
+    business in Canada, or outside Canada but directing services at people in
+    Canada.
+  not_covered:
+    text: >
+      Banks, authorized foreign banks, insurers, trust and loan companies and
+      other listed financial institutions; payments inside designated payment
+      systems; transfers between affiliates; agents of a registered PSP; and
+      some merchant-issued instruments like closed-loop gift cards.
+    cite:
+      - {source: rpaa, pinpoint: "ss.6–10", section: "6"}
+  unclear:
+    text: >
+      "Incidental to another service" is a judgment call (e.g. a marketplace
+      that collects payments for sellers). Get a written analysis from
+      compliance, and consider asking the Bank of Canada.
+    cite: [{source: rpaa, pinpoint: "s.2 'payment service provider'", section: "2"}, {source: our-guidance}]
+
+requirements:
+  - text: "The five payment functions are: maintaining an account for an end user, holding end-user funds, initiating a transfer at an end user's request, authorizing or transmitting transfer instructions, and providing clearing or settlement."
+    cite: [{source: rpaa, pinpoint: "s.2", section: "2"}]
+  - text: "The Act covers PSPs with a place of business in Canada, and foreign PSPs that direct retail payment activities at people in Canada."
+    cite: [{source: rpaa, pinpoint: "ss.4–5", section: "4"}]
+  - text: "You must be registered with the Bank of Canada before performing any retail payment activity."
+    cite: [{source: rpaa, pinpoint: "s.23", section: "23"}]
+  - text: "A change of control or other prescribed changes need a new application."
+    cite: [{source: rpaa, pinpoint: "s.24", section: "24"}]
+
+design_implications:
+  do:
+    - text: "Map each feature to the five payment functions before launch (e.g. 'wallet balance' = holding funds; 'send money' = initiating a transfer)."
+      cite: [{source: rpaa, pinpoint: "s.2", section: "2"}, {source: our-guidance}]
+    - text: "If you use a registered partner, document which functions they perform and which you perform. Being their agent can exclude you, but only within that role."
+      cite: [{source: rpaa, pinpoint: "s.10", section: "10"}]
+  dont:
+    - text: "Launch a stored-balance or send-money feature 'in beta' before registration is in place."
+      cite: [{source: rpaa, pinpoint: "s.23", section: "23"}]
+
+example: >
+  A budgeting app adds a feature to hold a balance and pay bills from it. It
+  now holds end-user funds and initiates transfers, so it must be registered
+  under the RPAA (and probably as an MSB with FINTRAC too).
+
+penalties:
+  text: "Penalties of up to $10M per violation, classified as minor, serious or very serious."
+  cite: [{source: rpaa, pinpoint: "s.101(1)(i), (k)", section: "101"}]
+
+related: [rpaa-safeguarding-funds, rpaa-operational-risk-incidents, fintrac-eft-reporting]
+last_verified: 2026-10-27

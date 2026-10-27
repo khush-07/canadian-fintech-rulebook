@@ -248,24 +248,19 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: s
 <script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@7.0.0/dist/fuse.min.js"></script>
 <script>
-// Content manifest. In the real site the build step will discover these files.
-const RULE_IDS = [
-  'casl-consent', 'casl-unsubscribe', 'casl-referral-messages', 'competition-misleading-messages',
-  'fintrac-identity-verification', 'fintrac-pep-hio', 'fintrac-third-party-determination', 'fintrac-business-relationship',
-  'sanctions-screening', 'crs-tax-self-certification', 'biometric-id-privacy', 'bank-basic-banking-access',
-];
-const FEATURE_IDS = ['marketing-messages', 'onboarding-kyc'];
+// The list of rules and guides comes from content/index.json, so new content needs no code change.
+let RULE_IDS = [], FEATURE_IDS = [];
 const FEATURE_TILES = [
   { id: 'marketing-messages', name: 'Marketing messages', blurb: 'Email, SMS, push and in-app promos' },
   { id: 'onboarding-kyc', name: 'Onboarding & KYC', blurb: 'ID checks, PEP and sanctions screening' },
-  { name: 'Payments & transfers', blurb: 'e-Transfer, EFTs, real-time payments' },
-  { name: 'Fees & pricing', blurb: 'Disclosures and fee change notices' },
-  { name: 'Lending & BNPL', blurb: 'Cost of borrowing, interest rate cap' },
-  { name: 'Complaints & support', blurb: 'Complaint handling, escalation' },
-  { name: 'AI & automated decisions', blurb: 'Model risk, explaining decisions' },
-  { name: 'Vendors & cloud', blurb: 'Third-party and technology risk' },
-  { name: 'Accounts & deposits', blurb: 'Deposit insurance, account terms' },
-  { name: 'Data & privacy', blurb: 'Consent, retention, breaches' },
+  { id: 'payments-transfers', name: 'Payments & transfers', blurb: 'Wallets, P2P, remittances, RPAA' },
+  { id: 'fees-pricing', name: 'Fees & pricing', blurb: 'Disclosures and fee change notices' },
+  { id: 'lending-bnpl', name: 'Lending & BNPL', blurb: 'Cost of borrowing, interest rate cap' },
+  { id: 'complaints-support', name: 'Complaints & support', blurb: 'Complaint handling, escalation' },
+  { id: 'ai-decisions', name: 'AI & automated decisions', blurb: 'Model risk, explaining decisions' },
+  { id: 'vendors-cloud', name: 'Vendors & cloud', blurb: 'Third-party and technology risk' },
+  { id: 'accounts-deposits', name: 'Accounts & deposits', blurb: 'Deposit insurance, account terms' },
+  { id: 'data-privacy', name: 'Data & privacy', blurb: 'Consent, retention, breaches' },
 ];
 const EXAMPLES = ['unsubscribe', 'selfie ID check', 'PEP', 'sanctions', 'refer a friend'];
 const AUTH = {
@@ -288,6 +283,7 @@ async function load() {
   // Locally the page lives in /prototype/ next to /content/; when published they sit side by side.
   const base = location.pathname.includes('/prototype/') ? '../' : '';
   const get = async p => { const r = await fetch(base + p); if (!r.ok) throw new Error(`Couldn't load ${p}`); return r.text(); };
+  ({ rules: RULE_IDS, features: FEATURE_IDS } = JSON.parse(await get('content/index.json')));
   DATA.sources = jsyaml.load(await get('content/sources.yaml'));
   await Promise.all(RULE_IDS.map(async id => { DATA.rules[id] = jsyaml.load(await get(`content/rules/${id}.yaml`)); }));
   await Promise.all(FEATURE_IDS.map(async id => {

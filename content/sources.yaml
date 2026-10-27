@@ -154,6 +154,41 @@ quebec-it-act:
   last_checked: 2026-10-12
   needs_review: true   # official site blocked automated fetch; ss.44-45 confirmed only via law-firm commentary
 
+rpaa:
+  title: "Retail Payment Activities Act, S.C. 2021, c. 23, s. 177"
+  short: RPAA
+  regulator: "Bank of Canada"
+  authority: binding
+  url: "https://laws-lois.justice.gc.ca/eng/acts/R-7.36/"
+  pinpoint_url_pattern: "https://laws-lois.justice.gc.ca/eng/acts/R-7.36/section-{section}.html"
+  currency_date: 2026-09-30
+  last_checked: 2026-10-27
+
+rpaa-regs:
+  title: "Retail Payment Activities Regulations, SOR/2023-229"
+  short: "RPAA Regulations"
+  regulator: "Bank of Canada"
+  authority: binding
+  url: "https://laws-lois.justice.gc.ca/eng/regulations/SOR-2023-229/"
+  pinpoint_url_pattern: "https://laws-lois.justice.gc.ca/eng/regulations/SOR-2023-229/section-{section}.html"
+  last_checked: 2026-10-27
+
+fintrac-eft-guidance:
+  title: "FINTRAC guidance: Reporting electronic funds transfers to FINTRAC"
+  short: "FINTRAC EFT guidance"
+  regulator: FINTRAC
+  authority: interpretive
+  url: "https://fintrac-canafe.canada.ca/guidance-directives/transaction-operation/eft-dt/eft-dt-eng"
+  last_checked: 2026-10-27
+
+fintrac-24hour-guidance:
+  title: "FINTRAC guidance: Reporting transactions to FINTRAC — the 24-hour rule"
+  short: "FINTRAC 24-hour rule"
+  regulator: FINTRAC
+  authority: interpretive
+  url: "https://fintrac-canafe.canada.ca/guidance-directives/transaction-operation/24hour/1-eng"
+  last_checked: 2026-10-27
+
 our-guidance:
   title: "Fintech Rules editorial team recommendation"
   short: "Best practice"
